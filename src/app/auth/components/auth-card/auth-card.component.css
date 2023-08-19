@@ -1,0 +1,92 @@
+.gradient-custom {
+    background-color: hsl(163, 40%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(180, 41%, 35%) 15%,
+        hsl(189, 41%, 30%) 35%,
+        hsl(199, 41%, 20%) 75%,
+        hsl(192, 40%, 19%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(187, 41%, 45%) 15%,
+        hsl(197, 41%, 30%) 35%,
+        hsl(191, 41%, 20%) 75%,
+        hsl(189, 40%, 19%) 80%,
+        transparent 100%);
+}
+
+
+.card{
+    border-radius: 3rem;
+    box-shadow: inset;
+    
+}
+
+
+.form-floating>.form-control:not(:placeholder-shown){
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+.form-floating>.form-control:focus~label::after{
+    background-color: transparent!important;
+    color: white;
+}
+
+.form-floating>.form-control:focus~label{
+    background-color: transparent!important;
+    color: white;
+    transform: scale(.85) translateY(-1.5rem) translateX(0.15rem);
+
+}
+
+.form-floating>.form-control:not(:placeholder-shown)~label{
+    transform: scale(.85) translateY(-1.5rem) translateX(0.15rem);
+
+}
+
+
+.form-floating>.form-control~label::after{
+    background-color: transparent!important;
+    color: white;
+}
+
+.form-floating>.form-control~label{
+    background-color: transparent!important;
+    color: white;
+}
+
+.personalized-inputs:focus {
+    box-shadow: none!important;
+    border-color: transparent;
+    border-bottom-color: #008000;
+}
+
+
+.form-floating>label {
+    padding: 0.5rem 0.75rem;
+}
+
+.personalized-inputs {
+    border-radius: 0;
+    border-color: transparent;
+    border-bottom-color: rgb(0, 109, 128);
+    height: 40px;
+    background-color: transparent!important;
+    
+}
+
+ .nav-link{
+    color: white;
+} 
+
+
+
+
+.img-resize {
+    margin: 1rem;
+    height: 80px;
+    width: 240px;
+}
+
+

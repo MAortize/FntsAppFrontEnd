@@ -1,0 +1,48 @@
+.eyes {
+    position: relative;
+    top: 50%;
+    transform: translateY(-10%);
+    transform: translateX(-5%);
+    width: 110%;
+    text-align: center;
+}
+
+.eye {
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    display: inline-block;
+    margin: 40px;
+    border-radius: 50%;
+    border: 1px solid #928e8e;
+    position: relative;
+    overflow: hidden;
+}
+
+.ball {
+    width: 60px;
+    height: 60px;
+    background: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 10px solid #660064;
+
+}
+.sonrisa {
+    
+    position: relative;
+    top: 80%;
+    transform: translateY(100%);
+    transform: translateX(245%);
+    width: 100px;
+    height: 50px;
+    /* text-align: center; */
+   
+    background: #fff;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-bottom-color: #000;
+}

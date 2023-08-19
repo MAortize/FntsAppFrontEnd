@@ -1,0 +1,91 @@
+.img-resize {
+    height: 200px;
+    width: 200px;
+}
+
+.rotate {
+    transform: scaleX(-1)
+}
+
+.icons-resize {
+    height: 100px;
+    width: 100px;
+}
+
+.form-floating>.form-control~label::after{
+    background-color: transparent!important;
+    /* color: white; */
+}
+
+
+.form-floating>.form-control:focus~label::after{
+    background-color: transparent!important;
+    /* color: white; */
+}
+
+.form-floating>.form-control:focus~label{
+    background-color: transparent!important;
+    /* color: white; */
+    transform: scale(.85) translateY(-1.2rem) translateX(0.15rem);
+
+}
+
+.form-floating>.form-control:not(:placeholder-shown)~label{
+    transform: scale(.85) translateY(-1.2rem) translateX(0.15rem);
+
+}
+
+
+
+.personalized-inputs{
+    border-radius: 0;
+    border-color: transparent;
+    border-bottom-color: #006d80;
+    height: 40px;
+    border-bottom: 2px solid rgb(0, 109, 128);
+    background-color: transparent!important;
+}
+
+
+.personalized-inputs-modal{
+    border-radius: 0;
+    border-color: transparent;
+    border-bottom-color: #006d80;
+    height: 50px;
+    border-bottom: 2px solid rgb(0, 109, 128);
+    background-color: transparent!important;
+}
+
+
+.personalized-inputs:focus {
+    box-shadow: none!important;
+    border-color: transparent;
+    border-bottom-color: #008000;
+}
+
+.personalized-inputs-modal:focus {
+    box-shadow: none!important;
+    border-color: transparent;
+    border-bottom-color: #008000;
+}
+
+.btn-outline-primary{
+    border-color: #006d80;
+    color: #006d80;
+}
+
+
+.btn-outline-primary:hover{
+    background-color: #006d80!important;
+    border-color: #006d80;
+    color: #fff
+}
+
+
+.btn-primary{
+    border-color: #006d80;
+    background-color: #006d80;
+}
+
+
+
