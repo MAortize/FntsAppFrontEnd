@@ -56,6 +56,14 @@
 
 }
 
+#nav-link-ranking:hover > #i-ranking{
+    -webkit-animation: fa-bounce 1s;
+    -moz-animation: fa-bounce 1s;
+    -o-animation: fa-bounce 1s;
+    animation: fa-bounce 1s;
+
+}
+
 .sidebar-left-mods {
     /* background-color: rgb(255,255,255); */
     /* color: rgb( 175,175,175); */

@@ -1,12 +1,8 @@
-import { NgModule, inject } from '@angular/core';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { AuthService } from '../auth/services/auth.service';
 import { authGuard } from '../auth/auth.guard';
-import { ProfileComponent } from './components/profile/profile.component';
-import { LearnComponent } from './components/learn/learn.component';
-import { GoOverComponent } from './components/go-over/go-over.component';
-import { ShopComponent } from './components/shop/shop.component';
+
 
 
 const routes: Routes = [
@@ -15,10 +11,13 @@ const routes: Routes = [
       path: '',
       canActivateChild: [authGuard],
       children: [
-        { path: '', component: LearnComponent },
-        { path: 'go-over', component: GoOverComponent },
-        { path: 'shop', component: ShopComponent },
-        { path: 'profile', component: ProfileComponent },
+        { path: '', loadChildren: () => import('../learn/learn.module').then(m => m.LearnModule) },
+        { path: 'go-over', loadChildren: () => import('../go-over/go-over.module').then(m => m.GoOverModule) },
+        { path: 'shop', loadChildren: () => import('../shop/shop.module').then(m => m.ShopModule) },
+        { path: 'ranking', loadChildren: () => import('../ranking/ranking.module').then(m => m.RankingModule) },
+        { path: 'profile', loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule) },
+        { path: 'prueba', loadChildren: () => import('../shared/shared.module').then(m => m.SharedModule) },
+
       ]
     }
 

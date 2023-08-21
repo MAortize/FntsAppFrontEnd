@@ -1,0 +1,18 @@
+.rotate {
+    transform: scaleX(-1);
+    max-width: 100%;
+    height: 350px;
+}
+
+.scroll {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.card-mods {
+    border-color: #5ada6fe8;
+}
+
+
+
+
