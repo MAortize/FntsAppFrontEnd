@@ -1,3 +1,16 @@
+@media only screen and (min-width: 600px) {
+    .py-5{
+        padding-top: 1rem!important;
+    }
+    .p-5{
+        padding: 25px!important;
+    }
+    .mt-4{
+        margin-top: 0!important;
+    }
+    
+}
+
 .gradient-custom {
     background-color: hsl(163, 40%, 15%);
     background-image: radial-gradient(650px circle at 0% 0%,

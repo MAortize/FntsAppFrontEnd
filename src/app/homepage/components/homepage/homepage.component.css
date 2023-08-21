@@ -1,3 +1,20 @@
+@media only screen and (min-width: 1068px) {
+
+    .img-resize {
+        /* margin: 0!important; */
+        height: 60px!important;
+        width: 200px!important;
+    }
+
+    .col-md-2 {
+        flex: 0.5 0 0%;
+    }
+
+    .col-md-3 {
+        flex: 0.5 0 0%;
+    }
+    
+}
 
 .img-resize {
     margin: 1rem;
