@@ -14,8 +14,8 @@ export class AuthCardComponent {
   emailLogin!: string;
   passwordLogin!: string;
 
-  emailSignUp!: string;
-  passwordSignUp!: string;
+  emailsignup!: string;
+  passwordsignup!: string;
 
   constructor(private authService: AuthService) {
     
@@ -33,7 +33,7 @@ export class AuthCardComponent {
   }
 
   register() {
-    this.authService.signUp(this.emailSignUp, this.passwordSignUp)
+    this.authService.signUp(this.emailsignup, this.passwordsignup)
   }
 
 

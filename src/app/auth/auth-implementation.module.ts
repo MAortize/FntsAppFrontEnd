@@ -9,6 +9,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { firebaseConfig } from 'src/environments/environment';
 import { AuthService } from './services/auth.service';
 import { AuthModule } from '@angular/fire/auth';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -27,6 +28,7 @@ import { AuthModule } from '@angular/fire/auth';
     AuthRoutingModule,
     AuthModule,
     FormsModule,
+    SharedModule
     
   ],
   exports: [

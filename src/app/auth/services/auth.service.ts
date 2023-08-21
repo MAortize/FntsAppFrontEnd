@@ -5,6 +5,8 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Auth, SignInMethod, signInWithPopup} from '@angular/fire/auth';
 
+import { Firestore, addDoc, collection, doc } from '@angular/fire/firestore';
+
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -30,27 +32,37 @@ export class AuthService {
   nickUser = new BehaviorSubject<string|null>('');
 
   
-
+  
+  
   userToken!: string;
-
+  
   @Output() loggedIn!: boolean;
-
-
-
-  constructor(private auth: Auth , private router: Router) { 
+  
+  
+  
+  constructor(private db: Firestore , private router: Router) { 
     this.leerToken();
   }
-
-
+  
+  
   
   signUp(email:string, password:string) {
+    
     createUserWithEmailAndPassword(getAuth(), email, password)
     .then((userCredential) => {
-      const user = userCredential.user.displayName;
-      console.log(user);
+      const getUser = userCredential.user
+      console.log(getUser.uid);
+      const pathCollection = 'users'
+      const docInstance = collection(this.db, pathCollection)
+      const userFillingData = {
+        uid: getUser.uid,
+        puntuacion: 0,
+        
+      }
+      addDoc(docInstance, userFillingData)
     })
     .catch(error => {
-      console.log(error);      
+      console.log('Aca salta el error',error);      
     })
   }
 

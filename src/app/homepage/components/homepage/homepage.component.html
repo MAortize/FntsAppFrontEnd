@@ -29,6 +29,13 @@
                                 class="fs-5 ms-3 d-none d-sm-inline">Tienda</span>
                         </a>
                     </li>
+                    <li class="nav-item py-2 py-sm-0">
+                        <a id="nav-link-ranking" class="nav-link text-dark efect-btn" [routerLink]="['/ranking']"
+                            routerLinkActive="active">
+                            <i id="i-ranking" class="fa-solid fa-ranking-star"></i><span
+                                class="fs-5 ms-3 d-none d-sm-inline">Ranking</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="dropdown open p-3">
@@ -46,7 +53,7 @@
             <router-outlet></router-outlet>
         </div>
         <div class="bg-white col col-md-2 col-lg-2 min-vh-100 d-flex flex-column align-items-center sidebar-right-mods">
-            <app-sidebar-right></app-sidebar-right>
+            <app-rigth-menu></app-rigth-menu>
         </div>
     </div>
 </div>
