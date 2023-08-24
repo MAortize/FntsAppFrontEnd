@@ -1,7 +1,69 @@
+@media only screen and (max-width: 1068px) {
+    .sidebar-right-mods{
+        background-color: bisque!important;
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: center!important;
+        align-items: center;
+        flex-wrap: wrap!important;
+        min-height: 0!important;
+        min-width: 100%;
+        position: fixed!important;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 210;
+        margin: 0!important;
+        padding: 0!important;
+        margin-top: auto;
+        
+    }
+
+    .width-media{
+        width: 66.33333333%!important;
+    }
+
+    .show {
+        align-self: center;
+        display: block!important;
+    }
+
+    .hidden {
+        display: none!important;
+    }
+
+    .scroll {
+        max-height: 100px!important;
+        overflow-y: auto;
+        width: 200px;
+        align-self: center;
+    }
+
+    .rotate {
+        height: 150px!important;
+    }
+
+    .card {
+        border: none!important;
+        background-color: transparent!important;
+        min-height: fit-content;
+        align-self: center;
+    }
+
+}
+.gap{
+    gap: 10px;
+}
+
+
+.show {
+    display: none;
+}
+
 .rotate {
     transform: scaleX(-1);
     max-width: 100%;
-    height: 350px;
+    height: 320px;
 }
 
 .scroll {
@@ -9,9 +71,6 @@
     overflow-y: auto;
 }
 
-.card-mods {
-    border-color: #5ada6fe8;
-}
 
 
 

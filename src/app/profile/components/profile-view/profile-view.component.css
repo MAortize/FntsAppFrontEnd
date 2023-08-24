@@ -1,3 +1,10 @@
+@media only screen and (min-width: 600px) {
+    .contenedor{
+        flex-wrap: wrap!important;
+    }
+    
+}
+
 .img-resize {
     height: 200px;
     width: 200px;
