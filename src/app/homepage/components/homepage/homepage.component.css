@@ -1,20 +1,104 @@
-@media only screen and (min-width: 1068px) {
+/*Media query para lograr que el contenido cambie de acuerdo al cambio de la pantalla, esto hace que el contenido html sea responsive
+Lo que el condicional quiere decir es que solo cuando el tamaño maximo de la pantalla sea 1068 ejecute las clases css dentro del media query por ejemplo de 100 px a 1068
+se ejecutan dichas clases*/
+@media only screen and (max-width: 1068px) {
 
+    /*Clase para cambiar el tamaño de la imagen dentro del media query*/
     .img-resize {
-        /* margin: 0!important; */
         height: 60px!important;
-        width: 200px!important;
+        width: 160px!important;
     }
 
-    .col-md-2 {
-        flex: 0.5 0 0%;
+    /*Clase para desaparecer un objeto html del DOM pero solamente cuando se cumpla el media query de arriba, se uso para desaparecer el texto
+    del menu de la izquierda junto con el simbolo FNTS para lograr hacer un navbar mas compacto pero diciente*/
+    .hidden {
+        display: none!important;
     }
 
-    .col-md-3 {
-        flex: 0.5 0 0%;
+
+    /*Clase para hacer responsive el sidebar de la izquierda y poder subirlo y que actue como si fuese un navbar*/
+    .sidebar-left-mods {
+        background-color: bisque!important;
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: center!important;
+        flex-wrap: wrap!important;
+        min-height: 0!important;
+        min-width: 100%;
+        right: 0;
+        left: 0;
+        position: fixed;
+        margin-top: 0!important;
+        z-index: 210;
+        border-right: none!important;
+    }
+
+
+     /*Clase para hacer responsive el menu dento del sidebar de la izquierda y poder subirlo y que actue como si fuese un navbar PD este metodo no es necesario separarlo en dos,
+     puede usarse el de arriba y ya. Pero debido a diferentes estilos que se buscaban se opto por separarlos. Pero tienen los mismos atributos*/
+    .menu-left-mods{
+        background-color: bisque!important;
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: center!important;
+        flex-wrap: wrap!important;
+        min-height: 0!important;
+        min-width: 100%;
+        right: 0;
+        left: 0;
+        /* bottom: 0; esto es para poder colocarla en bottom*/
+        /* align-items: center!important; */
+        position: fixed;
+        margin-top: 0!important;
+        z-index: 210;
+        border-right: none!important;
+    }
+
+    /*Clase para hacer responsive el sidebar de la derecha y poder bajarlo y que actue como si fuese un footer activo*/
+    .sidebar-right-mods {
+        background-color: bisque!important;
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: center!important;
+        align-items: center;
+        flex-wrap: wrap!important;
+        min-height: 0!important;
+        min-width: 100%;
+        position: fixed!important;
+        right: 0;
+        bottom: 0;
+        z-index: 210;
+    }
+
+
+    /*Clase para hacer responsive el main content(contenido de la pagina-routeroutlet)*/
+    .main-content{
+       display: flex!important;
+       flex-direction: column!important;
+       flex: 1 1 0%;
+       justify-content: center;
+       min-height: 100vh;
+       z-index: 1;
+    }
+
+    /*Clase que cuando el sidebar de la izquierda pase a ser un navbar los iconos sean mas grandes y por ende mas visibles*/
+    .sizing-icons {
+        font-size: 24px!important;
     }
     
+
+    
+    
 }
+
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+    align-items: center;
+}
+
 
 .img-resize {
     margin: 1rem;
@@ -48,7 +132,7 @@
     border-color: transparent;
 }
 
-
+/*Clase para lograr animacion de jumping en los diferentes iconos del sidebar izquierdo*/
 #nav-link-learn:hover > #i-learn{
     -webkit-animation: fa-bounce 1s;
     -moz-animation: fa-bounce 1s;
@@ -81,22 +165,32 @@
 
 }
 
+#nav-link-profile:hover > #i-profile{
+    -webkit-animation: fa-bounce 1s;
+    -moz-animation: fa-bounce 1s;
+    -o-animation: fa-bounce 1s;
+    animation: fa-bounce 1s;
+
+}
+
 .sidebar-left-mods {
-    /* background-color: rgb(255,255,255); */
-    /* color: rgb( 175,175,175); */
-    /* border-radius: 1rem; */
+    background-color: bisque!important;
     border-top: none;
     border-color: transparent;
     border-right-color:  rgba(204, 202, 202, 0.911);
     border-style: solid;
     border-width: 1px;
+    position: fixed;
 }
 
+
 .sidebar-right-mods {
+    background-color: bisque!important;
     border-top: none;
     border-color: transparent;
-    border-left-color:  rgba(204, 202, 202, 0.911);
     border-style: solid;
     border-width: 1px;
+    right: 0; /* Para fixear el sidebar a la derecha*/
+    position: fixed;
 
 }

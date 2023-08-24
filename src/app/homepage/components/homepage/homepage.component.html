@@ -1,59 +1,54 @@
-<div class="container-fluid overflow-auto">
-    <div class="row flex-nowrap">
-        <div
-            class="bg-white col-auto col-md-3 col-lg-2 min-vh-100 d-flex flex-column justify-content-between sidebar-left-mods">
-            <div class="bg-white p-2">
-                <a class="d-flex text-decoration-none justify-content-center text-dark" [routerLink]="['/learn']">
-                    <img src="../../../../assets/logoFNTSV5.png" alt="Logotipo de from noobie to scrummie"
-                        class="img-resize">
+<div class="container-fluid row overflow-auto">
+    <div class="bg-white p-2 col-auto col-md-3 col-lg-2 min-vh-100 d-flex flex-column sidebar-left-mods">
+        <a class="d-flex text-decoration-none justify-content-center text-dark hidden" [routerLink]="['/learn']">
+            <img src="../../../../assets/logoFNTSV5.png" alt="Logotipo de from noobie to scrummie" class="img-resize">
+        </a>
+        <ul class="nav nav-pills flex-column mt-4 menu-left-mods">
+            <li class="nav-item py-2 py-sm-0">
+                <a class="nav-link text-dark efect-btn" [routerLink]="['/learn']" routerLinkActive="active"
+                    id="nav-link-learn" aria-selected="true">
+                    <i id="i-learn" class="fs-5 fa-solid fa-book sizing-icons"></i><span
+                        class="fs-5 ms-3 d-none d-sm-inline hidden">Aprender</span>
                 </a>
-                <ul class="nav nav-pills flex-column mt-4 ">
-                    <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link text-dark efect-btn" [routerLink]="['/learn']" routerLinkActive="active"
-                            id="nav-link-learn" aria-selected="true">
-                            <i id="i-learn" class="fs-5 fa-solid fa-book"></i><span
-                                class="fs-5 ms-3 d-none d-sm-inline">Aprender</span>
-                        </a>
-                    </li>
-                    <li class="nav-item py-2 py-sm-0">
-                        <a id="nav-link-go-over" class="nav-link text-dark efect-btn" [routerLink]="['/go-over']"
-                            routerLinkActive="active">
-                            <i id="i-go-over" class="fs-5 fa-solid fa-pen-to-square"></i><span
-                                class="fs-5 ms-3 d-none d-sm-inline">Repasar</span>
-                        </a>
-                    </li>
-                    <li class="nav-item py-2 py-sm-0">
-                        <a id="nav-link-shop" class="nav-link text-dark efect-btn" [routerLink]="['/shop']"
-                            routerLinkActive="active">
-                            <i id="i-shop" class="fa-solid fa-shop"></i><span
-                                class="fs-5 ms-3 d-none d-sm-inline">Tienda</span>
-                        </a>
-                    </li>
-                    <li class="nav-item py-2 py-sm-0">
-                        <a id="nav-link-ranking" class="nav-link text-dark efect-btn" [routerLink]="['/ranking']"
-                            routerLinkActive="active">
-                            <i id="i-ranking" class="fa-solid fa-ranking-star"></i><span
-                                class="fs-5 ms-3 d-none d-sm-inline">Ranking</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="dropdown open p-3">
-                <button class="btn border-none text-dark efect-dropdown" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fs-5 fa-solid fa-user"></i><span class="ms-2">{{emailOnScreen}}</span>
-                </button>
-                <ul class="dropdown-menu" data-bs-theme="dark">
-                    <li class="dropdown-item" [routerLink]="['/profile']">Perfil</li>
-                    <li (click)="logOut()" class="dropdown-item">Cerrar Sesion</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col p-3">
-            <router-outlet></router-outlet>
-        </div>
-        <div class="bg-white col col-md-2 col-lg-2 min-vh-100 d-flex flex-column align-items-center sidebar-right-mods">
-            <app-rigth-menu></app-rigth-menu>
-        </div>
+            </li>
+            <li class="nav-item py-2 py-sm-0">
+                <a id="nav-link-go-over" class="nav-link text-dark efect-btn" [routerLink]="['/go-over']"
+                    routerLinkActive="active">
+                    <i id="i-go-over" class="fs-5 fa-solid fa-pen-to-square sizing-icons"></i><span
+                        class="fs-5 ms-3 d-none d-sm-inline hidden">Repasar</span>
+                </a>
+            </li>
+            <li class="nav-item py-2 py-sm-0">
+                <a id="nav-link-shop" class="nav-link text-dark efect-btn" [routerLink]="['/shop']"
+                    routerLinkActive="active">
+                    <i id="i-shop" class="fa-solid fa-shop sizing-icons"></i><span class="fs-5 ms-3 d-none d-sm-inline hidden">Tienda</span>
+                </a>
+            </li>
+            <li class="nav-item py-2 py-sm-0">
+                <a id="nav-link-ranking" class="nav-link text-dark efect-btn" [routerLink]="['/ranking']"
+                    routerLinkActive="active">
+                    <i id="i-ranking" class="fa-solid fa-ranking-star sizing-icons"></i><span
+                        class="fs-5 ms-3 d-none d-sm-inline hidden">Ranking</span>
+                </a>
+            </li>
+
+            <li class="nav-item py-2 py-sm-0 dropdown open pb-3">
+                <a id="nav-link-profile" class="nav-link text-dark efect-btn" [routerLink]="['/profile']" routerLinkActive="active">
+                    <i id="i-profile" class="fa-solid fa-user sizing-icons"></i><span class="fs-5 ms-3 d-none d-sm-inline hidden">Perfil</span>
+                </a>
+            </li>
+            <li (click)="logOut()" class="nav-item py-2 py-sm-0">
+                <a id="nav-link-ranking" class="nav-link text-dark efect-btn">
+                    <i id="i-ranking" class="fa-solid fa-right-from-bracket sizing-icons"></i><span
+                        class="fs-5 ms-3 d-none d-sm-inline hidden">Cerrar Sesion</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col p-3 main-content">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="bg-white p-2 col-auto col-md-3 col-lg-2 min-vh-100 d-flex flex-column sidebar-right-mods">
+        <app-rigth-menu></app-rigth-menu>
     </div>
 </div>
