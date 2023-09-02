@@ -28,6 +28,10 @@
 }
 
 
+.filter{
+    filter: invert(1) ;
+}
+
 .card{
     border-radius: 3rem;
     box-shadow: inset;

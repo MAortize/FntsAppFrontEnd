@@ -60,17 +60,19 @@
     display: none;
 }
 
+table {
+    background-color: red!important ;
+}
+
+.personalize-table {
+    width: 50px;
+}
+
 .rotate {
     transform: scaleX(-1);
     max-width: 100%;
     height: 320px;
 }
-
-.scroll {
-    max-height: 200px;
-    overflow-y: auto;
-}
-
 
 
 

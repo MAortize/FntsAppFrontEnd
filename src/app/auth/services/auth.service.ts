@@ -5,19 +5,14 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Auth, SignInMethod, signInWithPopup} from '@angular/fire/auth';
 
-import { Firestore, addDoc, collection, doc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, doc, setDoc } from '@angular/fire/firestore';
 
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 
-
-
-
 import Swal from 'sweetalert2';
 
-
-// import { DialogNotificationComponent } from 'src/app/shared/components/dialog-notification/dialog-notification.component';
 
 
 @Injectable({
@@ -46,21 +41,36 @@ export class AuthService {
   
   
   
-  signUp(email:string, password:string) {
+  signUp(email:string, password:string, pathImg?:string) {
     
     createUserWithEmailAndPassword(getAuth(), email, password)
     .then((userCredential) => {
-      const getUser = userCredential.user
-      console.log(getUser.uid);
-      const pathCollection = 'users'
-      const docInstance = collection(this.db, pathCollection)
-      const userFillingData = {
-        uid: getUser.uid,
-        puntuacion: 0,
-        
-      }
-      addDoc(docInstance, userFillingData)
+      const userRegister = userCredential.user
+      console.log(userRegister.uid);
+      Swal.fire({
+        title: 'Registro exitoso',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#008000'
+      }).then(() =>{
+        const pathCollection = 'users'
+        const userFillingData = {
+          uid: userRegister.uid,
+          userName: '',
+          puntuacion: 0,
+          urlPic: pathImg
+          
+        }
+        sessionStorage.setItem('uid', userRegister.uid!)
+        sessionStorage.setItem('urlPic', pathImg!)
+        setDoc(doc(this.db,pathCollection, userRegister.uid), userFillingData)
+        userRegister.getIdToken().then((token) => {
+          this.guardarToken(token)
+        })
+        this.router.navigateByUrl('learn')
+      })            
     })
+    
     .catch(error => {
       console.log('Aca salta el error',error);      
     })
@@ -78,6 +88,7 @@ export class AuthService {
         confirmButtonText:'Ok',
         confirmButtonColor: '#008000'
       }).then(() => {
+        sessionStorage.setItem('uid', userLogged.uid!)
         sessionStorage.setItem('email', userLogged.email!) 
         console.log(userLogged.displayName);
         
@@ -99,6 +110,8 @@ export class AuthService {
     sessionStorage.removeItem('token')
     sessionStorage.removeItem('email')
     sessionStorage.removeItem('expira')
+    sessionStorage.removeItem('uid')
+    sessionStorage.removeItem('urlPic')
   }
 
   private getInfoUser() {

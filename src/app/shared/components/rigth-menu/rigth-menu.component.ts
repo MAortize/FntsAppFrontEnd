@@ -1,4 +1,7 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked, DoCheck, AfterContentInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { DocumentData } from '@angular/fire/firestore';
+import { AchievementService } from '../../services/achievement.service';
 
 @Component({
   selector: 'app-rigth-menu',
@@ -8,14 +11,25 @@ import { Component, OnInit, AfterViewInit, AfterViewChecked, DoCheck, AfterConte
 
 export class RigthMenuComponent implements OnInit {
   
+  urlImgUserInSession:string|null
+
+
   
-  constructor(){ 
-  
+  constructor(protected service: AchievementService) {
+    this.urlImgUserInSession = sessionStorage.getItem('urlPic')
   }
   
   ngOnInit(): void {
     
   }
+
+  prueba(){
+    
+    
+    
+  }
+
+
   
 
 

@@ -4,64 +4,130 @@
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white text-center">
           <div class="card-header d-flex justify-content-center align-items-center">
-              <ul class="nav nav-tabs" id="tabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane" 
+            <ul class="nav nav-tabs" id="tabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane"
                   type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">Inicia Sesion</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup-tab-pane" 
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup-tab-pane"
                   type="button" role="tab" aria-controls="signup-tab-pane" aria-selected="false">Registro</button>
-                </li>
-              </ul>
+              </li>
+            </ul>
           </div>
           <a class="card-title">
             <img src="../../../../assets/logoFNTSV5.png" alt="Logotipo de from noobie to scrummie" class="img-resize">
-          </a> 
-          <div class="card-body p-5 text-center"> 
+          </a>
+          <div class="card-body p-5 text-center">
             <div class="mb-md-5 mt-md-4 pb-5">
               <div class="tab-content" id="auth-content">
-                <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab"
+                  tabindex="0">
                   <form (ngSubmit)="logIn()">
                     <div class="form-floating mb-4">
-                      <input type="email" [(ngModel)]="emailLogin" name="email-login" id="emaillogin" class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
-                      autocomplete="off" required/>
+                      <input type="email" [(ngModel)]="emailLogin" name="email-login" id="emaillogin"
+                        class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
+                        autocomplete="off" required />
                       <label class="" for="emaillogin">Correo Electronico</label>
                     </div>
                     <div class="form-floating mb-4">
-                      <input type="password" [(ngModel)]="passwordLogin" name="password-login" id="passwordlogin" class="form-control bg-black text-white personalized-inputs" placeholder="asdasd"
-                      required/>
+                      <input type="password" [(ngModel)]="passwordLogin" name="password-login" id="passwordlogin"
+                        class="form-control bg-black text-white personalized-inputs" placeholder="asdasd" required />
                       <label class="" for="passwordlogin">Contraseña</label>
                     </div>
                     <button class="btn btn-outline-success btn-lg px-5 mt-4" type="submit">Inicia Sesion</button>
                   </form>
                 </div>
-                <div class="tab-pane fade" id="signup-tab-pane" role="tabpanel" aria-labelledby="signup-tab" tabindex="0">
-                  <form (ngSubmit)="register()">
-                    <div class="row">                      
+                <div class="tab-pane fade show" id="signup-tab-pane" role="tabpanel" aria-labelledby="signup-tab"
+                  tabindex="0">
+                  <form (ngSubmit)="register()" (keydown.enter)="$event.preventDefault()">
+                    <div class="row">
                       <div class="col-md-6 mb-4">
                         <div class="form-floating">
-                          <input type="text" id="inputName" class="form-control bg-black text-white personalized-inputs" placeholder="Andres" autocomplete="off"/>
-                          <label  for="inputName">Nombres</label>
+                          <input type="text" id="inputName" class="form-control bg-black text-white personalized-inputs"
+                            placeholder="Andres" autocomplete="off" />
+                          <label for="inputName">Nombres</label>
                         </div>
                       </div>
                       <div class="col-md-6 mb-4">
                         <div class="form-floating">
-                          <input type="text" id="inputLastname" class="form-control bg-black text-white personalized-inputs" placeholder="Perez" autocomplete="off"/>
+                          <input type="text" id="inputLastname"
+                            class="form-control bg-black text-white personalized-inputs" placeholder="Perez"
+                            autocomplete="off" />
                           <label class="form-label" for="inputLastname">Apellidos</label>
                         </div>
                       </div>
                     </div>
                     <div class="form-floating mb-4">
-                      <input type="email" [(ngModel)]="emailsignup" name="email-signup" id="emailsignup" class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
-                      autocomplete="off"/>
+                      <input type="email" [(ngModel)]="emailsignup" name="email-signup" id="emailsignup"
+                        class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
+                        autocomplete="off" />
                       <label class="form-label" for="emailsignup">Correo Electronico</label>
                     </div>
                     <div class="form-floating mb-4">
-                      <input type="password" [(ngModel)]="passwordsignup" name="password-signup" id="passwordsignup" class="form-control bg-black text-white personalized-inputs" placeholder="asdasd"/>
+                      <input type="password" [(ngModel)]="passwordsignup" name="password-signup" id="passwordsignup"
+                        class="form-control bg-black text-white personalized-inputs" placeholder="asdasd" />
                       <label class="form-label" for="passwordsignup">Contraseña</label>
                     </div>
-                    <button class="btn btn-outline-success btn-lg px-5 mt-4" type="submit">Registrate</button>
+                    <button type="button" class="btn btn-outline-success btn-lg px-5 mt-4" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop">
+                      Registrarse
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                      tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content bg-dark">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Selecciona tu avatar</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="container-fluid">
+                              <div class="row">
+                                <div *ngFor="let itemHombre of imgPerfilHombres; let i = index" class="col">
+                                  <input (click)="logSelecciona(img.src)" type="radio" name="options-base" class="btn-check"
+                                    id="btn-check{{i+1}}" autocomplete="off">
+                                  <label class="btn" for="btn-check{{i+1}}"><img class="filter" src="{{itemHombre}}"
+                                      alt="" #img></label>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div *ngFor="let itemMujer of imgPerfilMujeres; let i = index" class="col">
+                                  <input (click)="logSelecciona(imgMujer.src)" type="radio"
+                                    name="options-base" class="btn-check" id="btn-checkMujer{{i+1}}" autocomplete="off">
+                                  <label class="btn" for="btn-checkMujer{{i+1}}"><img class="filter" src="{{itemMujer}}"
+                                      alt="" #imgMujer></label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <button class="btn btn-outline-success btn-lg px-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalSelectImgProfile">Registrate</button>
+                    <div class="modal-dialog modal-dialog-centered" id="modalSelectImgProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalSelectImgProfileLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
                   </form>
                 </div>
               </div>
@@ -72,5 +138,3 @@
     </div>
   </div>
 </section>
-
-

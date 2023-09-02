@@ -12,12 +12,6 @@ import { AuthModule } from '@angular/fire/auth';
 import { SharedModule } from '../shared/shared.module';
 
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AuthCardComponent,
@@ -35,8 +29,7 @@ import { SharedModule } from '../shared/shared.module';
     AuthCardComponent
   ],
   providers: [
-    AuthService,
-    
+    AuthService    
   ]
 
 })
