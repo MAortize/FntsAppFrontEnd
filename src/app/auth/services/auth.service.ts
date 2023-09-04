@@ -8,7 +8,9 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Au
 import { Firestore, addDoc, collection, doc } from '@angular/fire/firestore';
 
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { HttpClient}  from '@angular/common/http';
+import baseUrl from './helper';
 
 
 
@@ -32,6 +34,7 @@ export class AuthService {
   nickUser = new BehaviorSubject<string|null>('');
 
   
+  public loginStatusSubjec = new Subject<boolean>();
   
   
   userToken!: string;
@@ -40,10 +43,69 @@ export class AuthService {
   
   
   
-  constructor(private db: Firestore , private router: Router) { 
+  constructor(private http: HttpClient, private db: Firestore , private router: Router) { 
     this.leerToken();
   }
+
+  public añadirUsuario(user:any){
+    return this.http.post(`${baseUrl}/users/`,user);
+  }
   
+  //generamos el token
+  public generateToken(loginData:any){
+    return this.http.post(`${baseUrl}/generate-token`,loginData);
+  }
+
+  public getCurrentUser(){
+    return this.http.get(`${baseUrl}/actual-usuario`);
+  }
+
+  //iniciamos sesión y establecemos el token en el localStorage (diferente a firebase, cambiar nombre)
+  public loginUser(token:any){
+    sessionStorage.setItem('token',token);
+    return true;
+  }
+
+  public isLoggedIn(){
+    let tokenStr = sessionStorage.getItem('token');
+    if(tokenStr == undefined || tokenStr == '' || tokenStr == null){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  //cerranis sesion y eliminamos el token del localStorage
+  public logout(){
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    return true;
+  }
+
+  //obtenemos el token
+  public getToken(){
+    return sessionStorage.getItem('token');
+  }
+
+  public setUser(user:any){
+    sessionStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('email',user.email);
+  }
+
+  public getUser(){
+    let userStr = sessionStorage.getItem('user');
+    if(userStr != null){
+      return JSON.parse(userStr);
+    }else{
+      this.logout();
+      return null;
+    }
+  }
+
+  public getUserRole(){
+    let user = this.getUser();
+    return user.authorities[0].authority;
+  }
   
   
   signUp(email:string, password:string) {

@@ -16,7 +16,9 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
-    this.emailOnScreen = sessionStorage.getItem('email')
+    this.emailOnScreen = sessionStorage.getItem("email");
+    console.log(this.emailOnScreen);
+    
   }
 
   logOut(){
