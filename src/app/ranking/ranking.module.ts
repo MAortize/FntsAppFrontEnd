@@ -12,6 +12,9 @@ import { RankingViewComponent } from './components/ranking-view/ranking-view.com
   imports: [
     CommonModule,
     RankingRoutingModule
+  ],
+  exports: [
+    RankingViewComponent
   ]
 })
 export class RankingModule { }
