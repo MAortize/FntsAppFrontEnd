@@ -25,15 +25,15 @@
                   tabindex="0">
                   <form (ngSubmit)="logIn()">
                     <div class="form-floating mb-4">
-                      <input type="email" [(ngModel)]="emailLogin" name="email-login" id="emaillogin"
+                      <input type="email" [(ngModel)]="emailLogin" name="email-login" id="emailLogin"
                         class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
                         autocomplete="off" required />
-                      <label class="" for="emaillogin">Correo Electronico</label>
+                      <label class="" for="emailLogin">Correo Electronico</label>
                     </div>
                     <div class="form-floating mb-4">
-                      <input type="password" [(ngModel)]="passwordLogin" name="password-login" id="passwordlogin"
+                      <input type="password" [(ngModel)]="loginData.password" name="password-login" id="password"
                         class="form-control bg-black text-white personalized-inputs" placeholder="asdasd" required />
-                      <label class="" for="passwordlogin">Contraseña</label>
+                      <label class="" for="password">Contraseña</label>
                     </div>
                     <button class="btn btn-outline-success btn-lg px-5 mt-4" type="submit">Inicia Sesion</button>
                   </form>
@@ -44,30 +44,30 @@
                     <div class="row">
                       <div class="col-md-6 mb-4">
                         <div class="form-floating">
-                          <input type="text" id="inputName" class="form-control bg-black text-white personalized-inputs"
+                          <input type="text" [(ngModel)]="user.name" name="user.name" id="user.name" class="form-control bg-black text-white personalized-inputs"
                             placeholder="Andres" autocomplete="off" />
-                          <label for="inputName">Nombres</label>
+                          <label for="user.name">Nombres</label>
                         </div>
                       </div>
                       <div class="col-md-6 mb-4">
                         <div class="form-floating">
-                          <input type="text" id="inputLastname"
+                          <input type="text" [(ngModel)]="user.lastname" name="user.lastname" id="user.lastname"
                             class="form-control bg-black text-white personalized-inputs" placeholder="Perez"
                             autocomplete="off" />
-                          <label class="form-label" for="inputLastname">Apellidos</label>
+                          <label class="form-label" for="user.lastname">Apellidos</label>
                         </div>
                       </div>
                     </div>
                     <div class="form-floating mb-4">
-                      <input type="email" [(ngModel)]="emailsignup" name="email-signup" id="emailsignup"
+                      <input type="email" [(ngModel)]="user.email" name="email-signup" id="email"
                         class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
                         autocomplete="off" />
-                      <label class="form-label" for="emailsignup">Correo Electronico</label>
+                      <label class="form-label" for="email">Correo Electronico</label>
                     </div>
                     <div class="form-floating mb-4">
-                      <input type="password" [(ngModel)]="passwordsignup" name="password-signup" id="passwordsignup"
+                      <input type="password" [(ngModel)]="user.password" name="password-signup" id="password"
                         class="form-control bg-black text-white personalized-inputs" placeholder="asdasd" />
-                      <label class="form-label" for="passwordsignup">Contraseña</label>
+                      <label class="form-label" for="password">Contraseña</label>
                     </div>
                     <button type="button" class="btn btn-outline-success btn-lg px-5 mt-4" data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop">

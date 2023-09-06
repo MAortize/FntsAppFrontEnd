@@ -8,7 +8,9 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Au
 import { Firestore, addDoc, collection, doc, setDoc } from '@angular/fire/firestore';
 
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { HttpClient}  from '@angular/common/http';
+import baseUrl from '../../../environments/environment';
 
 
 import Swal from 'sweetalert2';
@@ -26,7 +28,8 @@ export class AuthService {
   nameUser = new BehaviorSubject<string|null>('');
   nickUser = new BehaviorSubject<string|null>('');
 
-  
+  public loginStatusSubjec = new Subject<boolean>();
+
   
   
   userToken!: string;
@@ -35,14 +38,68 @@ export class AuthService {
   
   
   
-  constructor(private db: Firestore , private router: Router) { 
+  constructor(private http: HttpClient, private db: Firestore , private router: Router) { 
     this.leerToken();
   }
   
+  public añadirUsuario(user:any){
+    return this.http.post(`${baseUrl}/users/`,user);
+  }
+  
+  //generamos el token
+  public generateToken(loginData:any){
+    return this.http.post(`${baseUrl}/generate-token`,loginData);
+  }
+
+  public getCurrentUser(){
+    return this.http.get(`${baseUrl}/actual-usuario`);
+  }
+
+  //iniciamos sesión y establecemos el token en el localStorage (diferente a firebase, cambiar nombre)
+  public loginUser(token:any){
+    sessionStorage.setItem('JWT',token);
+    return true;
+  }
+
+  public isLoggedIn(){
+    let tokenStr = sessionStorage.getItem('JWT');
+    if(tokenStr == undefined || tokenStr == '' || tokenStr == null){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  //obtenemos el token
+  public getToken(){
+    return sessionStorage.getItem('JWT');
+  }
+
+  public setUser(user:any){
+    sessionStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('email',user.email);
+  }
+
+  public getUser(){
+    let userStr = sessionStorage.getItem('user');
+    if(userStr != null){
+      return JSON.parse(userStr);
+    }else{
+      this.signOut();
+      return null;
+    }
+  }
+
+  public getUserRole(){
+    let user = this.getUser();
+    return user.authorities[0].authority;
+  }
   
   
-  signUp(email:string, password:string, pathImg?:string) {
+  signUp(email:string, password:string, pathImg?:string, user?:any) {
     
+    this.añadirUsuario(user);
+
     createUserWithEmailAndPassword(getAuth(), email, password)
     .then((userCredential) => {
       const userRegister = userCredential.user
@@ -82,23 +139,17 @@ export class AuthService {
     .then((userCredential) => {
       const userLogged = userCredential.user;
       console.log(userLogged.uid);
-      Swal.fire({
-        title: 'Inicio sesion de manera exitosa',
-        icon: 'success',
-        confirmButtonText:'Ok',
-        confirmButtonColor: '#008000'
-      }).then(() => {
-        sessionStorage.setItem('uid', userLogged.uid!)
-        sessionStorage.setItem('email', userLogged.email!) 
-        console.log(userLogged.displayName);
-        
-        // sessionStorage.setItem('name', userLogged.displayName!)
-        userLogged.getIdToken().then((token) => {
-          this.guardarToken(token)
-        })
-        this.router.navigateByUrl('learn')
-        // console.log(userLogged.email);
-      })      
+
+      sessionStorage.setItem('uid', userLogged.uid!);
+      sessionStorage.setItem('email', userLogged.email!);
+      console.log(userLogged.displayName);
+
+      // sessionStorage.setItem('name', userLogged.displayName!)
+      userLogged.getIdToken().then((token) => {
+        this.guardarToken(token);
+      });
+      this.router.navigateByUrl('learn');
+      // console.log(userLogged.email);
     })
     .catch(error => {
       console.log(error);      
@@ -112,6 +163,7 @@ export class AuthService {
     sessionStorage.removeItem('expira')
     sessionStorage.removeItem('uid')
     sessionStorage.removeItem('urlPic')
+    sessionStorage.removeItem('JWT')
   }
 
   private getInfoUser() {
@@ -144,12 +196,13 @@ export class AuthService {
   //METODO PARA VALIDAR SI ESTA AUTENTICADO Y PERMITIR QUE ENTRE A LAS DEMAS VENTANAS
   estaAutenticado(): boolean {
   
-    if (this.userToken.length < 2) {
+    let tokenStr = sessionStorage.getItem('JWT');
+    if (this.userToken.length < 2 || tokenStr == undefined || tokenStr == '' || tokenStr == null) {
       this.loggedIn = false;
       return false
+    } else {
+      return true;
     }
-
-    return true
     
   
     // const expira = Number(sessionStorage.getItem('expira'));

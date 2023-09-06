@@ -11,6 +11,9 @@ export const firebaseConfig = {
     appId: "1:792339987995:web:e5c7a61c50a7f8bb3b02be"
   };
 
+  let baseUrl = 'http://localhost:8080'
+  export default baseUrl;
+
 
 // const app = initializeApp(firebaseConfig)
 
