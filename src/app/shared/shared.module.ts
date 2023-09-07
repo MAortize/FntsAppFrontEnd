@@ -9,6 +9,7 @@ import { AchievementsComponent } from './components/achievements/achievements.co
 import { PruebaComponent } from './components/prueba/prueba.component';
 import { RigthMenuComponent } from './components/rigth-menu/rigth-menu.component';
 import { RankingModule } from '../ranking/ranking.module';
+import { ErrorFormsHandleComponent } from './components/error-forms-handle/error-forms-handle.component';
 
 
 
@@ -17,7 +18,8 @@ import { RankingModule } from '../ranking/ranking.module';
   declarations: [
     AchievementsComponent,
     PruebaComponent,
-    RigthMenuComponent
+    RigthMenuComponent,
+    ErrorFormsHandleComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { RankingModule } from '../ranking/ranking.module';
   ],
   exports: [
     AchievementsComponent,
-    RigthMenuComponent
+    RigthMenuComponent,
+    ErrorFormsHandleComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,43 @@
+<div *ngIf="formControlErrorEmail?.invalid && formControlErrorEmail?.touched">
+    <!-- Validadores de email -->
+    <div *ngIf="formControlErrorEmail.errors?.['required']" class="error">El {{input}} es requerido.</div>
+    <div *ngIf="formControlErrorEmail.errors?.['email']" class="error">El {{input}} no es valido.</div>
+    <div *ngIf="formControlErrorEmail.errors?.['pattern']" class="error">El {{input}} no tiene el formato correcto.
+    </div>
+    <!-- ----- -->
+</div>
+
+<div *ngIf="formControlErrorPasswordLogin?.invalid && formControlErrorPasswordLogin?.touched">
+    <!-- validadores de contraseña Login-->
+    <div *ngIf="formControlErrorPasswordLogin.errors?.['required']" class="error">La {{input}} es requerida.</div>
+
+    <!-- ----- -->
+</div>
+
+<div *ngIf="formControlErrorPasswordRegister?.invalid && formControlErrorPasswordRegister?.touched">
+    <!-- validadores de contraseña Registro -->
+    <div *ngIf="formControlErrorPasswordRegister.errors?.['required']" class="error">La {{input}} es requerida.</div>
+    <div *ngIf="formControlErrorPasswordRegister.errors?.['pattern']" class="error">La {{input}} no tiene el formato correcto.</div>
+    <!-- ----- -->
+</div>
+
+<div *ngIf="formControlErrorNombre?.invalid && formControlErrorNombre?.touched">
+
+    <!-- validadores de Nombres -->
+    <div *ngIf="formControlErrorNombre.errors?.['required']" class="error">El {{input}} es requerido.</div>
+    <!-- ----- -->
+</div>
+
+
+<div *ngIf="formControlErrorApellido?.invalid && formControlErrorApellido?.touched">
+
+    <!-- validadores de apellidos -->
+    <div *ngIf="formControlErrorApellido.errors?.['required']" class="error">El {{input}} es requerido.</div>
+    <!-- ----- -->
+</div>
+
+<div *ngIf="formControlErrorUsername?.invalid && formControlErrorUsername?.touched">
+    <!-- validadores de username -->
+    <div *ngIf="formControlErrorUsername.errors?.['required']" class="error">El {{input}} es requerido.</div>
+    <!-- ----- -->
+</div>

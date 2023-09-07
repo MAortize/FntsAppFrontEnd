@@ -7,7 +7,6 @@ import { AuthImplementationModule } from './auth/auth-implementation.module';
 import { HomepageModule } from './homepage/homepage.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { authInterceptorProviders } from './auth/services/auth.interceptor';
 
 
 @NgModule({
@@ -23,7 +22,7 @@ import { authInterceptorProviders } from './auth/services/auth.interceptor';
     HttpClientModule
     
   ],
-  providers: [authInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

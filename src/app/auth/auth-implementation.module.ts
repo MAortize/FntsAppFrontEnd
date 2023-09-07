@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutingModule } from './auth-implementation-routing.module';
 import { AuthCardComponent } from './components/auth-card/auth-card.component';
@@ -22,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
     AuthRoutingModule,
     AuthModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
     
   ],
   exports: [

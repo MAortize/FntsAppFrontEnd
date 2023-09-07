@@ -20,9 +20,7 @@ export class AchievementService {
 
 
 
-  constructor(protected db: Firestore) {
-    
-  }
+  constructor(protected db: Firestore) {  }
 
 
   //TODO: HACER EL METODO LIBRE DE PUNTOS ES DECIR, LA PUNTUACION QUE LE LLEGUE ES LA QUE DEBE SUMAR, SE DEBE PARAMETRIZAR EL METODO PARA QUE RECIBA LAS PUNTUACIONES NECESARIAS

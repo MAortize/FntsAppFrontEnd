@@ -11,12 +11,14 @@ import { AchievementService } from '../../services/achievement.service';
 
 export class RigthMenuComponent implements OnInit {
   
-  urlImgUserInSession:string|null
+  urlImgUserInSession: string|null;
+  usernameInSession: string|null;
 
 
   
   constructor(protected service: AchievementService) {
     this.urlImgUserInSession = sessionStorage.getItem('urlPic')
+    this.usernameInSession = sessionStorage.getItem('username')
   }
   
   ngOnInit(): void {

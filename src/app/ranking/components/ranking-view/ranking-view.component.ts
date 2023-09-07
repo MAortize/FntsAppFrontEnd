@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RankingService } from '../../services/ranking.service';
 import { DocumentData } from '@angular/fire/firestore';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-ranking-view',
@@ -10,6 +11,7 @@ import { DocumentData } from '@angular/fire/firestore';
 export class RankingViewComponent implements OnInit {
 
   listaDeUsuarios: DocumentData[] = []
+  cargando = false;
 
 
   constructor(protected rankingService: RankingService) {
@@ -26,6 +28,7 @@ export class RankingViewComponent implements OnInit {
       this.rankingService.getDataInitial().then((docs) => {
         docs.forEach((items) => {
           this.listaDeUsuarios.push(items.data())
+          this.cargando = true
         })
       })
     }

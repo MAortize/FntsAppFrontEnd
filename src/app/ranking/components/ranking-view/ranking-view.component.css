@@ -9,6 +9,9 @@
 }
 
 
+#cellImg{
+    vertical-align: middle;
+}
 
 .align-start {
     display: flex;
