@@ -1,17 +1,105 @@
 @media only screen and (max-width: 1068px) {
-    .contenedor {
-        display: flex!important;
-        flex-direction: row!important;
-        flex-wrap: wrap!important;
-        margin-bottom: 80px!important;
-        margin-top: 50px!important;
-        gap: 10px;
-    }    
+    .mod {
+        margin-top: 80px;
+    }
+
+}
+
+.contenedor {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    /* align-self: center!important; */
 }
 
 
-.contenedor {
-    display: flex!important;
-    flex-direction: column!important;
-    flex-wrap: nowrap!important;
+.mod-img{
+    height: 96px;
+    width: 96px;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
+.header-mods#headerCurso1{
+    /* margin-top: 50px; */
+    /* position: fixed; */
+}
+
+
+.header-mods {
+    align-items: center;
+    background-color: #5ada6f!important;
+    background-size: 700px 200px;
+    color: black;
+    -moz-column-gap: 16px;
+    column-gap: 16px;
+    display: grid;
+    grid-auto-columns: 1fr min-content;
+    overflow: hidden;
+    padding: 16px;
+    position: relative;
+    border-radius: 13px;
+    row-gap: 3px;
+    width: 894.08px;
+}
+
+.modh1 {
+    font-size: 25px;
+    color: white;
+    font-weight: 700;
+    line-height: 1.36;
+    margin: 0;
+}
+
+.modspan{
+    color: #fff;
+
+}
+
+.parent2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sun#initialSun{
+    margin-top: 30px;
+}
+
+.sun#initialSun2{
+    margin-top: 40px;
+}
+
+.sun{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px!important;
+    width: 8em;
+    height: 8em;
+    background: rgb(0,30,36);
+    background: linear-gradient(149deg, rgba(0,30,36,1) 21%, rgba(9,102,121,1) 62%, rgba(0,255,209,1) 100%);
+    border-radius: 50%;
+    box-shadow: inset 0px -10px 1px 1px rgba(0, 30, 36, 0.7), inset -2px -2px 3px rgba(255, 255, 253, 0.1), 2px 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+button.sun:disabled{
+    background: #808080!important;
+    box-shadow: inset 0px -10px 1px 1px rgba(69, 75, 77, 0.7), inset -2px -2px 3px rgba(255, 255, 253, 0.1), 2px 2px 10px rgba(255, 255, 255, 0.1);
+    opacity: 0.4;
+}
+
+[aria-disabled="true"] {
+  opacity: 0.3;
+}
+
+.mod-icon{
+    color: white;
+    font-size: 3em;
+}
+button:disabled.mod-icon{
+    color: #ff0000;
+    font-size: 3em;
 }

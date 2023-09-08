@@ -30,6 +30,8 @@
 
 .filter{
     filter: invert(1) ;
+    width: 64px!important;
+    height: 65px!important;
 }
 
 .card{

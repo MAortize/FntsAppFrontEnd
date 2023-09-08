@@ -1,13 +1,166 @@
-@media only screen and (min-width: 600px) {
-    .contenedor{
-        flex-wrap: wrap!important;
+@media only screen and (max-width: 1024px) {
+    /* .scroll {
+        max-height: 100px!important;
+        overflow-y: auto;
+        width: 200px;
+        align-self: center;
+    } */
+
+    .mod{        
+        justify-content: center!important;
+        min-height: 100vh;
     }
     
 }
 
+@media only screen and (max-width: 1068px) {
+    /* .card{
+        width: 168px!important;
+    } */
+    .contenedor-inputs{
+        width: 256px!important;
+    }
+
+    .mod{        
+        justify-content: center!important;
+        min-height: 100vh;
+    }
+
+    /* .gp{
+        --bs-gutter-x:0!important;
+        margin-left: 22px!important;
+    } */
+
+    
+}
+
+@media only screen and (max-width: 765px) {
+    .rotate{
+        width: 128px!important;
+        height: 128px!important;
+    }
+
+    #cardPic.card{
+        border: none;
+    }
+
+    .scroll {
+        max-height: 100px!important;
+        overflow-y: auto;
+        width: 200px!important;
+        align-self: center;
+        margin-left: 20px!important;
+        /* background-color: #006d80; */
+    }
+
+    .mod{        
+        justify-content: center!important;
+        min-height: 100vh;
+        align-items: center!important;
+    }
+
+    .gp{
+        --bs-gutter-x:0!important;
+        margin-left: 22px!important;
+    }
+    
+}
+
+@media only screen and (max-width: 540px) {
+    .rotate{
+        width: 128px!important;
+        height: 128px!important;
+    }
+
+    #cardPic.card{
+        border: none;
+    }
+
+    .scroll {
+        max-height: 100px!important;
+        overflow-y: auto;
+        width: 200px!important;
+        align-self: center;
+        margin-left: 20px!important;
+        /* background-color: #006d80; */
+    }
+
+    .mod{        
+        justify-content: center!important;
+        min-height: 100vh;
+        align-items: normal!important;
+    }
+
+    .gp{
+        --bs-gutter-x:0!important;
+        margin-left: 22px!important;
+    }
+    
+}
+
+input#userProfile:disabled,#emailProfile:disabled{
+    color: gray!important;
+}
+
+.mod{
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+}
+
+#nise{    
+    filter: invert(1);
+}
+
+#colAchievements{
+    width: 400px!important;
+    border: none!important;
+}
+
+#cardAchievements{
+    max-width: 100%!important;
+}
+
+
+#btn-check-4+.btn{
+    border-color: #006d80!important;
+    color: #006d80;
+}
+
+#btn-check-4:hover+.btn{
+    border-color: #5ada6fe8!important;
+    color: #5ada6fe8!important;
+}
+
+#btn-check-4:checked+.btn{
+    border-color: #5ada6fe8!important;
+    color: #358b43e8!important;
+}
+
+#btn-check-4:checked:hover+.btn{
+    border-color: #006d80!important;
+    color: #006d80!important;
+}
+
+.btn-outline-success{
+    color: #358b43e8!important;
+    border-color: #5ada6fe8!important;
+}
+
+.btn-outline-success:disabled{
+    color: gray!important;
+    border-color: gray!important;
+}
+
+.btn-outline-success:hover{
+    color: white!important;
+    border-color: #358b43e8!important;
+    background-color: #358b43e8!important;
+}
+
 .img-resize {
-    height: 200px;
-    width: 200px;
+    height: 128px!important;
+    width: 128px!important;
 }
 
 .rotate {
@@ -68,6 +221,10 @@
     box-shadow: none!important;
     border-color: transparent;
     border-bottom-color: #008000;
+}
+
+.personalized-inputs:disabled{
+    border-bottom-color: darkgray;
 }
 
 .personalized-inputs-modal:focus {

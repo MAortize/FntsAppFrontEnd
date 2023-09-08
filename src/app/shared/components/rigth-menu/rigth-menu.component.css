@@ -1,6 +1,32 @@
+@media only screen and (min-width: 768px) {
+    .col-md-6 {
+        flex: 1 0 auto!important;
+        width: 50%!important;
+    }
+
+    .img-resize {
+        width: 70px!important;
+        height: 70px!important;
+    }
+}
+
+
+
 @media only screen and (max-width: 1068px) {
     .sidebar-right-mods{
-        background-color: bisque!important;
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
         display: flex!important;
         flex-direction: row!important;
         justify-content: center!important;
@@ -18,51 +44,67 @@
         margin-top: auto;
         
     }
-
-    .width-media{
+    
+    
+    /* .width-media{
         width: 66.33333333%!important;
-    }
-
+    } */
+    
     .show {
         align-self: center;
         display: block!important;
     }
-
+    
     .hidden {
         display: none!important;
     }
-
-    .scroll {
-        max-height: 100px!important;
-        overflow-y: auto;
-        width: 200px;
-        align-self: center;
-    }
-
+    
+    
+    
     .rotate {
         height: 150px!important;
     }
-
+    
     .card {
         border: none!important;
         background-color: transparent!important;
         min-height: fit-content;
         align-self: center;
     }
+    
+    .img-resize {
+        width: 64px!important;
+        height: 64px!important;
+    }
 
+    .m-r{
+        margin-left: 8px!important;
+    }
 }
+
+
+@media only screen and (max-width: 455px) {
+    .sidebar-right-mods{
+        flex-wrap: nowrap!important;
+    }
+
+    
+}
+
+.card{
+    background-color: transparent!important;
+    border-color: transparent;
+    color: white!important;
+}
+
 .gap{
     gap: 10px;
 }
-
 
 .show {
     display: none;
 }
 
-table {
-    background-color: red!important ;
-}
 
 .personalize-table {
     width: 50px;
@@ -72,6 +114,16 @@ table {
     transform: scaleX(-1);
     max-width: 100%;
     height: 320px;
+}
+
+.img-resize {
+    width: 96px;
+    height: 96px;
+    color: aliceblue;
+    background-color: aliceblue;
+    border: solid;
+    border-radius: 50px;
+    margin-left: 5px;
 }
 
 

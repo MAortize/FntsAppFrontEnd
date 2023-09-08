@@ -1,81 +1,82 @@
-<div class="d-flex mt-5 justify-content-center">
-    <div class="row contenedor flex-nowrap">
-        <div class="col-lg-6">
-            <div class="card">
-                <img src="../../../../assets/user-profile-icon-free-vector.jpg" class="img-resize" alt="">
+<div class="mod">
+    <div class="d-flex">
+        <div class="row flex-nowrap">
+            <div class="col">
+                <div class="card" id="cardPic">
+                    <img src="{{urlPicProfile}}" class="img-resize align-self-center" alt="">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-8 d-flex flex-column justify-content-between">
-            <div class="form-floating form-floating-profile">
-                <input type="email" name="email-profile" id="emailProfile" class="form-control personalized-inputs"
-                    value="{{email}}" placeholder="{{email}}">
-                <label for="emailProfile">Correo Electronico</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" name="name-profile" id="nameProfile" class="form-control personalized-inputs"
-                    value="Nombre" placeholder="Nombres">
-                <label for="nameProfile">Nombre</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" name="user-profile" id="userProfile" class="form-control personalized-inputs"
-                    value="NickName" placeholder="NickName">
-                <label for="userProfile">Nombre de Usuario</label>
+            <div class="col-lg-8 d-flex flex-column justify-content-between gap-2 contenedor-inputs">
+                <div class="form-floating form-floating-profile">
+                    <input type="email" name="email-profile" id="emailProfile" class="form-control personalized-inputs"
+                        value="{{email}}" placeholder="{{email}}" [disabled]="changeData">
+                    <label for="emailProfile">Correo Electronico</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="user-profile" id="userProfile" class="form-control personalized-inputs"
+                    value="{{nickName}}" placeholder="{{nickName}}" [disabled]="changeData">
+                    <label for="userProfile">Nombre de Usuario</label>
+                </div>
+                <div class="form-floating align-self-center">
+                    <button class="btn btn-outline-success" [disabled]="changeData">Confirmar envio de datos</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="d-flex m-3 justify-content-center">
-    <div class="row">
-        <div class="col">
-            <input class="btn btn-outline-danger" type="button" value="Cambiar Contraseña"  data-bs-toggle="modal"
-            data-bs-target="#modalChangePassword">
-            <div class="modal fade" id="modalChangePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true" data-bs-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia tu contraseña</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-floating">
-                                    <input type="password" id="inputName"
-                                        class="form-control text-black personalized-inputs-modal"
-                                        placeholder="Andres" autocomplete="off" />
-                                    <label for="inputName">Nueva Contraseña</label>
-                                </div>
-                                <div class="form-floating">
-                                    <input type="password" id="inputName"
-                                        class="form-control text-black personalized-inputs-modal"
-                                        placeholder="Andres" autocomplete="off" />
-                                    <label for="inputName">Confirmar Contraseña</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+    <div class="d-flex m-3">
+        <div class="row gp">
+            <div class="col">
+                <input class="btn btn-outline-danger" type="button" value="Cambiar Contraseña"  data-bs-toggle="modal"
+                data-bs-target="#modalChangePassword">
+                <div class="modal fade" id="modalChangePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-bs-backdrop="static">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia tu contraseña</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-floating">
+                                        <input type="password" id="inputName"
+                                            class="form-control text-black personalized-inputs-modal"
+                                            placeholder="Andres" autocomplete="off" />
+                                        <label for="inputName">Nueva Contraseña</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="password" id="inputName"
+                                            class="form-control text-black personalized-inputs-modal"
+                                            placeholder="Andres" autocomplete="off" />
+                                        <label for="inputName">Confirmar Contraseña</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <input class="btn btn-outline-primary" type="button" value="Modificar Datos">
-        </div>
-    </div>
-</div>
-<div class="d-flex m-3 justify-content-center">
-    <div class="row">
-        <div class="col">
-            <div class="card" style="width: 30rem;">
-                <app-achievements></app-achievements>
+            <div class="col">
+                <input (click)="activarCambioData()" type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
+                <label class="btn" type="button" for="btn-check-4">{{value}}</label>
             </div>
         </div>
-        <div class="col align-self-center">
-            <div class="">
-                <img src="../../../../assets/Male_idle.gif" class="rotate" alt="">
+    </div>
+    <div class="d-flex m-3 justify-content-center">
+        <div class="row">
+            <div class="col" id="colAchievements">
+                <div class="card scroll" id="cardAchievements">
+                    <app-achievements id="nise"></app-achievements>
+                </div>
+            </div>
+            <div class="col align-self-center">
+                <div class="">
+                    <img src="../../../../assets/Male_idle.gif" class="rotate" alt="">
+                </div>
             </div>
         </div>
     </div>

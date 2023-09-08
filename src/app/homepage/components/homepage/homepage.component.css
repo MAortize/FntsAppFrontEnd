@@ -1,3 +1,11 @@
+@media only screen and (max-width: 1360px) {
+    .img-resize {
+        height: 60px!important;
+        width: 160px!important;
+    }
+}
+
+
 /*Media query para lograr que el contenido cambie de acuerdo al cambio de la pantalla, esto hace que el contenido html sea responsive
 Lo que el condicional quiere decir es que solo cuando el tamaño maximo de la pantalla sea 1068 ejecute las clases css dentro del media query por ejemplo de 100 px a 1068
 se ejecutan dichas clases*/
@@ -18,7 +26,19 @@ se ejecutan dichas clases*/
 
     /*Clase para hacer responsive el sidebar de la izquierda y poder subirlo y que actue como si fuese un navbar*/
     .sidebar-left-mods {
-        background-color: bisque!important;
+        background-color: rgb(23, 54, 45);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
         display: flex!important;
         flex-direction: row!important;
         justify-content: center!important;
@@ -37,7 +57,19 @@ se ejecutan dichas clases*/
      /*Clase para hacer responsive el menu dento del sidebar de la izquierda y poder subirlo y que actue como si fuese un navbar PD este metodo no es necesario separarlo en dos,
      puede usarse el de arriba y ya. Pero debido a diferentes estilos que se buscaban se opto por separarlos. Pero tienen los mismos atributos*/
     .menu-left-mods{
-        background-color: bisque!important;
+         background-color: hsl(163, 40%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(180, 41%, 35%) 15%,
+        hsl(189, 41%, 30%) 35%,
+        hsl(199, 41%, 20%) 75%,
+        hsl(192, 40%, 19%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(187, 41%, 45%) 15%,
+        hsl(197, 41%, 30%) 35%,
+        hsl(191, 41%, 20%) 75%,
+        hsl(189, 40%, 19%) 80%,
+        transparent 100%);
         display: flex!important;
         flex-direction: row!important;
         justify-content: center!important;
@@ -56,7 +88,19 @@ se ejecutan dichas clases*/
 
     /*Clase para hacer responsive el sidebar de la derecha y poder bajarlo y que actue como si fuese un footer activo*/
     .sidebar-right-mods {
-        background-color: bisque!important;
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
         display: flex!important;
         flex-direction: row!important;
         justify-content: center!important;
@@ -76,7 +120,6 @@ se ejecutan dichas clases*/
        display: flex!important;
        flex-direction: column!important;
        flex: 1 1 0%;
-       justify-content: center;
        min-height: 100vh;
        z-index: 1;
     }
@@ -85,18 +128,22 @@ se ejecutan dichas clases*/
     .sizing-icons {
         font-size: 24px!important;
     }
-    
+}
 
-    
-    
+.menu-left-mods{
+    color: white!important;
 }
 
 
 .main-content{
     display: flex;
     flex-direction: column;
-    flex: 1 1 0%;
-    align-items: center;
+    flex: 1 0 0%;
+    align-items: center!important;
+    /* align-self: center!important; */
+    /* justify-self: center; */
+    /* width: fit-content;   */
+      /* max-width: ; */
 }
 
 
@@ -116,6 +163,7 @@ se ejecutan dichas clases*/
 .efect-btn  {
     border: none;
     border-color: transparent;
+    color: white!important;
 }
 
 .efect-btn:hover {
@@ -174,7 +222,19 @@ se ejecutan dichas clases*/
 }
 
 .sidebar-left-mods {
-    background-color: bisque!important;
+    background-color: hsl(163, 40%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(180, 41%, 35%) 15%,
+        hsl(189, 41%, 30%) 35%,
+        hsl(199, 41%, 20%) 75%,
+        hsl(192, 40%, 19%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(187, 41%, 45%) 15%,
+        hsl(197, 41%, 30%) 35%,
+        hsl(191, 41%, 20%) 75%,
+        hsl(189, 40%, 19%) 80%,
+        transparent 100%);
     border-top: none;
     border-color: transparent;
     border-right-color:  rgba(204, 202, 202, 0.911);
@@ -185,7 +245,19 @@ se ejecutan dichas clases*/
 
 
 .sidebar-right-mods {
-    background-color: bisque!important;
+    background-color: hsl(163, 40%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(180, 41%, 35%) 15%,
+        hsl(189, 41%, 30%) 35%,
+        hsl(199, 41%, 20%) 75%,
+        hsl(192, 40%, 19%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(187, 41%, 45%) 15%,
+        hsl(197, 41%, 30%) 35%,
+        hsl(191, 41%, 20%) 75%,
+        hsl(189, 40%, 19%) 80%,
+        transparent 100%);
     border-top: none;
     border-color: transparent;
     border-style: solid;

@@ -3,12 +3,11 @@
         <div class="card" style="max-width: 100%;">
             <div class="row g-0 ">
                 <div class="col-md-4">
-                    <img src={{urlImgUserInSession}} alt="">
+                    <img src={{urlImgUserInSession}} class="img-resize" alt="">
                 </div>
                 <div class="col-md-6 width-media align-self-center">
-                    <h5 class="card-title">{{usernameInSession}}</h5>
-                    <div class="card-subtitle">Puntuacion: 50</div>
-                    <div class="card-subtitle">Puesto en tabla: 3</div>
+                    <h5 class="card-title m-r">{{usernameInSession}}</h5>
+                    <div class="card-subtitle hidden">Puntuacion: 50</div>
                 </div>
             </div>
             <!-- <img src="../../../../assets/logoFNTSV5.png" class="card-img-top" alt="..."> -->
@@ -22,10 +21,10 @@
     <li>
         <div class="row g-0 justify-content-center hidden">
             <div class="col-auto align-self-center">
-                <h5 class="card-title">Conquistas</h5>
+                <h5 class="card-title text-white">Conquistas</h5>
             </div>
         </div>
-        <div class="card scroll hidden" style="max-width: 100%;">
+        <div class="card hidden" style="max-width: 100%;">
             <app-achievements></app-achievements>
         </div>
     </li>

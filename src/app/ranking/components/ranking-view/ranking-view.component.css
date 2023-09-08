@@ -1,24 +1,38 @@
-.contenedor {
-    display: flex!important;
-    flex-direction: column!important;
-    flex-wrap: nowrap!important;
-    width: 500px;
-    /* min-height: 100vh; */
-    justify-content: center;
-    align-items: center;
+@media only screen and (max-width: 480px) {
+    .contenedor {
+        height: 100px!important;
+        margin-top: 70px;
+        /* min-height: 100vh!important; */
+    }
+    .mod-table {
+        width: 200px!important;
+        /* height: 100px!important; */
+        max-height: 100px!important;
+    }
 }
-
 
 #cellImg{
     vertical-align: middle;
 }
 
-.align-start {
-    display: flex;
-    justify-content: flex-start;
+.img-resize {
+    width: 64px!important;
+    height: 64px!important;
 }
 
-.align-end {
+
+
+.mod{
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    position: relative;
+    width: 500px;
+    /* background-color: red; */
+    /* height: 100px; */
 }
+
+
+/* td,th,tr{
+    margin-top: 0;
+    margin-bottom: 0;
+} */
