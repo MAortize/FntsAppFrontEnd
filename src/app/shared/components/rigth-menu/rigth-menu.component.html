@@ -1,4 +1,4 @@
-<ul class="nav nav-pills flex-column mt-5 gap sidebar-right-mods">
+<ul class="nav nav-pills flex-column mt-3 gap sidebar-right-mods">
     <li class="nav-item">
         <div class="card" style="max-width: 100%;">
             <div class="row g-0 ">
@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-md-6 width-media align-self-center">
                     <h5 class="card-title m-r">{{usernameInSession}}</h5>
-                    <div class="card-subtitle hidden">Puntuacion: 50</div>
+                    <div class="card-subtitle hidden">Puntuacion: {{scoreUserInSesssion}}</div>
                 </div>
             </div>
             <!-- <img src="../../../../assets/logoFNTSV5.png" class="card-img-top" alt="..."> -->
@@ -24,7 +24,7 @@
                 <h5 class="card-title text-white">Conquistas</h5>
             </div>
         </div>
-        <div class="card hidden" style="max-width: 100%;">
+        <div class="card hidden" id="cardAchievements" style="max-width: 100%;">
             <app-achievements></app-achievements>
         </div>
     </li>
@@ -34,7 +34,7 @@
         </div>
     </li>
     <li>
-        <div class="col hidden" style="max-width: 100%;">
+        <div class="hidden" style="max-width: 100%;">
             <div class="">
                 <img src="../../../../assets/Male_idle.gif" class="rotate" alt="">
             </div>

@@ -1,7 +1,7 @@
 @media only screen and (max-width: 1360px) {
     .img-resize {
-        height: 60px!important;
-        width: 160px!important;
+        height: 60px !important;
+        width: 160px !important;
     }
 }
 
@@ -13,14 +13,14 @@ se ejecutan dichas clases*/
 
     /*Clase para cambiar el tamaño de la imagen dentro del media query*/
     .img-resize {
-        height: 60px!important;
-        width: 160px!important;
+        height: 60px !important;
+        width: 160px !important;
     }
 
     /*Clase para desaparecer un objeto html del DOM pero solamente cuando se cumpla el media query de arriba, se uso para desaparecer el texto
     del menu de la izquierda junto con el simbolo FNTS para lograr hacer un navbar mas compacto pero diciente*/
     .hidden {
-        display: none!important;
+        display: none !important;
     }
 
 
@@ -28,87 +28,87 @@ se ejecutan dichas clases*/
     .sidebar-left-mods {
         background-color: rgb(23, 54, 45);
         background-image: radial-gradient(650px circle at 0% 0%,
-            hsl(180, 41%, 35%) 15%,
-            hsl(189, 41%, 30%) 35%,
-            hsl(199, 41%, 20%) 75%,
-            hsl(192, 40%, 19%) 80%,
-            transparent 100%),
-          radial-gradient(1250px circle at 100% 100%,
-            hsl(187, 41%, 45%) 15%,
-            hsl(197, 41%, 30%) 35%,
-            hsl(191, 41%, 20%) 75%,
-            hsl(189, 40%, 19%) 80%,
-            transparent 100%);
-        display: flex!important;
-        flex-direction: row!important;
-        justify-content: center!important;
-        flex-wrap: wrap!important;
-        min-height: 0!important;
+                hsl(180, 41%, 35%) 15%,
+                hsl(189, 41%, 30%) 35%,
+                hsl(199, 41%, 20%) 75%,
+                hsl(192, 40%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(187, 41%, 45%) 15%,
+                hsl(197, 41%, 30%) 35%,
+                hsl(191, 41%, 20%) 75%,
+                hsl(189, 40%, 19%) 80%,
+                transparent 100%);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        min-height: 0 !important;
         min-width: 100%;
         right: 0;
         left: 0;
         position: fixed;
-        margin-top: 0!important;
+        margin-top: 0 !important;
         z-index: 210;
-        border-right: none!important;
+        border-right: none !important;
     }
 
 
-     /*Clase para hacer responsive el menu dento del sidebar de la izquierda y poder subirlo y que actue como si fuese un navbar PD este metodo no es necesario separarlo en dos,
+    /*Clase para hacer responsive el menu dento del sidebar de la izquierda y poder subirlo y que actue como si fuese un navbar PD este metodo no es necesario separarlo en dos,
      puede usarse el de arriba y ya. Pero debido a diferentes estilos que se buscaban se opto por separarlos. Pero tienen los mismos atributos*/
-    .menu-left-mods{
-         background-color: hsl(163, 40%, 15%);
-    background-image: radial-gradient(650px circle at 0% 0%,
-        hsl(180, 41%, 35%) 15%,
-        hsl(189, 41%, 30%) 35%,
-        hsl(199, 41%, 20%) 75%,
-        hsl(192, 40%, 19%) 80%,
-        transparent 100%),
-      radial-gradient(1250px circle at 100% 100%,
-        hsl(187, 41%, 45%) 15%,
-        hsl(197, 41%, 30%) 35%,
-        hsl(191, 41%, 20%) 75%,
-        hsl(189, 40%, 19%) 80%,
-        transparent 100%);
-        display: flex!important;
-        flex-direction: row!important;
-        justify-content: center!important;
-        flex-wrap: wrap!important;
-        min-height: 0!important;
+    .menu-left-mods {
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(180, 41%, 35%) 15%,
+                hsl(189, 41%, 30%) 35%,
+                hsl(199, 41%, 20%) 75%,
+                hsl(192, 40%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(187, 41%, 45%) 15%,
+                hsl(197, 41%, 30%) 35%,
+                hsl(191, 41%, 20%) 75%,
+                hsl(189, 40%, 19%) 80%,
+                transparent 100%);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        min-height: 0 !important;
         min-width: 100%;
         right: 0;
         left: 0;
         /* bottom: 0; esto es para poder colocarla en bottom*/
         /* align-items: center!important; */
         position: fixed;
-        margin-top: 0!important;
+        margin-top: 0 !important;
         z-index: 210;
-        border-right: none!important;
+        border-right: none !important;
     }
 
     /*Clase para hacer responsive el sidebar de la derecha y poder bajarlo y que actue como si fuese un footer activo*/
     .sidebar-right-mods {
         background-color: hsl(163, 40%, 15%);
         background-image: radial-gradient(650px circle at 0% 0%,
-            hsl(180, 41%, 35%) 15%,
-            hsl(189, 41%, 30%) 35%,
-            hsl(199, 41%, 20%) 75%,
-            hsl(192, 40%, 19%) 80%,
-            transparent 100%),
-          radial-gradient(1250px circle at 100% 100%,
-            hsl(187, 41%, 45%) 15%,
-            hsl(197, 41%, 30%) 35%,
-            hsl(191, 41%, 20%) 75%,
-            hsl(189, 40%, 19%) 80%,
-            transparent 100%);
-        display: flex!important;
-        flex-direction: row!important;
-        justify-content: center!important;
+                hsl(180, 41%, 35%) 15%,
+                hsl(189, 41%, 30%) 35%,
+                hsl(199, 41%, 20%) 75%,
+                hsl(192, 40%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(187, 41%, 45%) 15%,
+                hsl(197, 41%, 30%) 35%,
+                hsl(191, 41%, 20%) 75%,
+                hsl(189, 40%, 19%) 80%,
+                transparent 100%);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
         align-items: center;
-        flex-wrap: wrap!important;
-        min-height: 0!important;
+        flex-wrap: wrap !important;
+        min-height: 0 !important;
         min-width: 100%;
-        position: fixed!important;
+        position: fixed !important;
         right: 0;
         bottom: 0;
         z-index: 210;
@@ -116,34 +116,41 @@ se ejecutan dichas clases*/
 
 
     /*Clase para hacer responsive el main content(contenido de la pagina-routeroutlet)*/
-    .main-content{
-       display: flex!important;
-       flex-direction: column!important;
-       flex: 1 1 0%;
-       min-height: 100vh;
-       z-index: 1;
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0%;
+        min-height: 100vh;
+        z-index: 1;
     }
 
     /*Clase que cuando el sidebar de la izquierda pase a ser un navbar los iconos sean mas grandes y por ende mas visibles*/
     .sizing-icons {
-        font-size: 24px!important;
+        font-size: 24px !important;
     }
 }
 
-.menu-left-mods{
-    color: white!important;
+.menu-left-mods {
+    color: white !important;
+    display: flex;
+
 }
 
-
-.main-content{
+.main-content {
+    /* background-color: rgb(0, 106, 138); */
+    /* background: #61616171; */
+    /* background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+    /* background: rgb(9, 102, 121);
+    background: linear-gradient(100deg, rgba(9, 102, 121, 1) 0%, #9b9a9a 50%, rgba(9, 102, 121, 1) 100%); */
     display: flex;
     flex-direction: column;
     flex: 1 0 0%;
-    align-items: center!important;
+    align-items: center !important;
+    min-height: 100vh;
     /* align-self: center!important; */
     /* justify-self: center; */
     /* width: fit-content;   */
-      /* max-width: ; */
+    /* max-width: ; */
 }
 
 
@@ -153,17 +160,17 @@ se ejecutan dichas clases*/
     width: 240px;
 }
 
-.active{
-    background-color: #5ada6f52!important;
-    border: #5ada6fe8!important;
-    border-style: solid!important;
-    border-width: 1px!important;
+.active {
+    background-color: #5ada6f52 !important;
+    border: #5ada6fe8 !important;
+    border-style: solid !important;
+    border-width: 1px !important;
 }
 
-.efect-btn  {
+.efect-btn {
     border: none;
     border-color: transparent;
-    color: white!important;
+    color: white !important;
 }
 
 .efect-btn:hover {
@@ -176,12 +183,12 @@ se ejecutan dichas clases*/
 
 
 .efect-dropdown:focus {
-    box-shadow: none!important;
+    box-shadow: none !important;
     border-color: transparent;
 }
 
 /*Clase para lograr animacion de jumping en los diferentes iconos del sidebar izquierdo*/
-#nav-link-learn:hover > #i-learn{
+#nav-link-learn:hover>#i-learn {
     -webkit-animation: fa-bounce 1s;
     -moz-animation: fa-bounce 1s;
     -o-animation: fa-bounce 1s;
@@ -189,7 +196,7 @@ se ejecutan dichas clases*/
 
 }
 
-#nav-link-go-over:hover > #i-go-over{
+#nav-link-go-over:hover>#i-go-over {
     -webkit-animation: fa-bounce 1s;
     -moz-animation: fa-bounce 1s;
     -o-animation: fa-bounce 1s;
@@ -197,7 +204,7 @@ se ejecutan dichas clases*/
 
 }
 
-#nav-link-shop:hover > #i-shop{
+#nav-link-shop:hover>#i-shop {
     -webkit-animation: fa-bounce 1s;
     -moz-animation: fa-bounce 1s;
     -o-animation: fa-bounce 1s;
@@ -205,7 +212,7 @@ se ejecutan dichas clases*/
 
 }
 
-#nav-link-ranking:hover > #i-ranking{
+#nav-link-ranking:hover>#i-ranking {
     -webkit-animation: fa-bounce 1s;
     -moz-animation: fa-bounce 1s;
     -o-animation: fa-bounce 1s;
@@ -213,7 +220,7 @@ se ejecutan dichas clases*/
 
 }
 
-#nav-link-profile:hover > #i-profile{
+#nav-link-profile:hover>#i-profile {
     -webkit-animation: fa-bounce 1s;
     -moz-animation: fa-bounce 1s;
     -o-animation: fa-bounce 1s;
@@ -224,20 +231,20 @@ se ejecutan dichas clases*/
 .sidebar-left-mods {
     background-color: hsl(163, 40%, 15%);
     background-image: radial-gradient(650px circle at 0% 0%,
-        hsl(180, 41%, 35%) 15%,
-        hsl(189, 41%, 30%) 35%,
-        hsl(199, 41%, 20%) 75%,
-        hsl(192, 40%, 19%) 80%,
-        transparent 100%),
-      radial-gradient(1250px circle at 100% 100%,
-        hsl(187, 41%, 45%) 15%,
-        hsl(197, 41%, 30%) 35%,
-        hsl(191, 41%, 20%) 75%,
-        hsl(189, 40%, 19%) 80%,
-        transparent 100%);
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
     border-top: none;
     border-color: transparent;
-    border-right-color:  rgba(204, 202, 202, 0.911);
+    border-right-color: rgba(204, 202, 202, 0.911);
     border-style: solid;
     border-width: 1px;
     position: fixed;
@@ -247,22 +254,30 @@ se ejecutan dichas clases*/
 .sidebar-right-mods {
     background-color: hsl(163, 40%, 15%);
     background-image: radial-gradient(650px circle at 0% 0%,
-        hsl(180, 41%, 35%) 15%,
-        hsl(189, 41%, 30%) 35%,
-        hsl(199, 41%, 20%) 75%,
-        hsl(192, 40%, 19%) 80%,
-        transparent 100%),
-      radial-gradient(1250px circle at 100% 100%,
-        hsl(187, 41%, 45%) 15%,
-        hsl(197, 41%, 30%) 35%,
-        hsl(191, 41%, 20%) 75%,
-        hsl(189, 40%, 19%) 80%,
-        transparent 100%);
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
     border-top: none;
     border-color: transparent;
     border-style: solid;
     border-width: 1px;
-    right: 0; /* Para fixear el sidebar a la derecha*/
+    right: 0;
+    /* Para fixear el sidebar a la derecha*/
     position: fixed;
 
+}
+
+
+[aria-disabled="true"] {
+
+    background: none;
+    display: none;
 }

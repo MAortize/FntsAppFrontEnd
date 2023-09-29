@@ -10,13 +10,26 @@ import { Router } from '@angular/router';
 export class HomepageComponent implements OnInit {
   
   emailOnScreen : string|null = null;
+  adminEmail: string|null = sessionStorage.getItem('email');
+  thereIsAdminEmail: boolean|null = null;
 
-  constructor(private auth: AuthService, private router: Router){
+  constructor(private auth: AuthService, private router: Router){ 
+    this.adminEmail = sessionStorage.getItem('email')
+    
+    this.validateAdminEmail()
+    
   }
 
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
     this.emailOnScreen = sessionStorage.getItem('email')
+  }
+
+  validateAdminEmail(){
+    if (this.adminEmail === null) {
+      this.thereIsAdminEmail = false
+    }else if(this.adminEmail==='adminfnts@gmail.com') {
+      this.thereIsAdminEmail = true
+    }
   }
 
   logOut(){

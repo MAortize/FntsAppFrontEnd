@@ -97,6 +97,13 @@
     color: white!important;
 }
 
+
+.card#cardAchievements{
+    /* background-color: transparent!important; */
+    /* border-color: red; */
+    /* color: white!important; */
+}
+
 .gap{
     gap: 10px;
 }
@@ -125,6 +132,10 @@
     border-radius: 50px;
     margin-left: 5px;
 }
+
+
+
+
 
 
 

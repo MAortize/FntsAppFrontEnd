@@ -25,3 +25,37 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+
+
+
+
+
+## COMPONENTE QUE PUEDE SERVIR PARA HACER UNA ACTIVIDAD DRAG AND DROP
+<!-- <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" #inputCurso>
+<button (click)="agregarCurso(inputCurso.value)" class="btn btn-warning">Agregar</button>
+<div class="row">
+    <div cdkDropList
+      class="col-6"
+      #ln1="cdkDropList"
+      [cdkDropListData]="listNumbers1"
+      [cdkDropListConnectedTo]="[ln2]"
+      (cdkDropListDropped)="drop($event)">
+      <div cdkDrag class="block block-1" *ngFor="let n of listNumbers1">
+        <span>{{n}}</span>
+      </div>
+    </div>
+    <div cdkDropList
+      class="col-6"
+      #ln2="cdkDropList"
+      [cdkDropListData]="listNumbers2"
+      [cdkDropListConnectedTo]="[ln1]"
+      (cdkDropListDropped)="drop($event)">
+      <div cdkDrag class="block block-2" *ngFor="let n of listNumbers2">
+        <span>{{n}}</span>
+      </div>
+    </div>
+</div> -->
+

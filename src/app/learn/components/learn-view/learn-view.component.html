@@ -1,29 +1,221 @@
-<div class="contenedor">
-    <header id="headerCurso1" class="header-mods">
-        <h1 class="modh1">Curso 1</h1>
-        <span class="modspan">En este curso aprenderas acerca de que es una metodologia agil y las mas relevantes dentro de ella</span>
+<div *ngFor="let item of cursos;let i = index" class="contenedor">
+    <header id="headerCurso{{i}}" class="header-mods">
+        <h1 class="modh1">{{listCursos[i].name}}</h1>
+        <span class="modspan">{{listCursos[i].description}}</span>
     </header>
-    <div class="parent2">        
-        <button id="initialSun" class="sun" [disabled]="!disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="!disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
+    <div *ngFor="let curso of item; let j = index">
+        <button id="curso{{i}}btnActivity{{j}}" class="sun" data-bs-toggle="modal"
+            [attr.data-bs-target]="'#firstLookActivity'+j" [disabled]="recibe(curso)" (click)="prueba(j)"><i
+                class="fa-solid fa-book mod-icon"></i></button>
+                
+
+        <!-- Modal -->
+        <div class="modal fade" id="firstLookActivity{{j}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Importante</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div *ngIf="!hideBtnIfActivitySuccess(curso)" class="modal-body">
+                        Descripcion: En esta actividad encontraras.....
+                        <br>
+                        Si la finalizas sumaras 10 puntos!!
+                    </div>
+                    <div *ngIf="hideBtnIfActivitySuccess(curso)" class="modal-body">
+                        Descripcion: En esta actividad encontraras.....
+                        <br>
+                        Ya finalizaste esta actividad pero siempre puedes volver a ver su informacion :D
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button *ngIf="!hideBtnIfActivitySuccess(curso)" data-bs-toggle="modal"
+                            [attr.data-bs-target]="'#staticBackdrop'+j" class="btn btn-primary">Resolver
+                            actividad</button>
+                        <button *ngIf="hideBtnIfActivitySuccess(curso)" data-bs-toggle="modal"
+                            [attr.data-bs-target]="'#staticBackdrop'+j" class="btn btn-primary">Repasar
+                            actividad</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form (ngSubmit)="sumPuntos(curso)">
+            <div class="modal fade" id="staticBackdrop{{j}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" [attr.aria-labelledby]="curso.nombreActividad" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content bg-dark text-white">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{curso.nombreActividad}}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="carouselPresentations{{j}}" class="carousel slide" data-bs-wrap="false">
+                                <div id="pruebaaa" class="carousel-inner">
+                                    <div id="topItem" class="carousel-item active">
+                                        <div class="content-carousel">
+                                            <span id="pruebaxd">{{curso.diapositivas[0]?.contenido}}</span>
+                                            <img src="{{curso.diapositivas[0]?.imagen}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div id="midItem" class="carousel-item">
+                                        <div class="content-carousel">
+                                            <span id="pruebaxd">{{curso.diapositivas[1]?.contenido}}</span>
+                                            <img src="{{curso.diapositivas[1]?.imagen}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div id="lastItem" class="carousel-item">
+                                        <div class="content-carousel">
+                                            <span id="pruebaxd">{{curso.diapositivas[2]?.contenido}}</span>
+                                            <img src="{{curso.diapositivas[2]?.imagen}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="curso.existeQuiz" id="pregunta1" class="carousel-item">
+                                        <div class="content-carousel">
+                                            <div class="pr">
+                                                <!-- PRIMERA PREGUNTA -->
+                                                <img src="{{curso.quiz[0]?.imagen}}" alt="">
+                                                <span id="pruebaxd">{{curso.quiz[0]?.pregunta}}</span>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption1" class="form-check-input"
+                                                        type="radio" name="pregunta1opcion1" id="pregunta1opcion1"
+                                                        value="1">
+                                                    <label class="form-check-label" for="pregunta1opcion1">
+                                                        {{curso.quiz[0]?.opcion1}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption1" class="form-check-input"
+                                                        type="radio" name="pregunta1opcion2" id="pregunta1opcion2"
+                                                        value="2">
+                                                    <label class="form-check-label" for="pregunta1opcion2">
+                                                        {{curso.quiz[0]?.opcion2}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption1" class="form-check-input"
+                                                        type="radio" name="pregunta1opcion3" id="pregunta1opcion3"
+                                                        value="3">
+                                                    <label class="form-check-label" for="pregunta1opcion3">
+                                                        {{curso.quiz[0]?.opcion3}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption1" class="form-check-input"
+                                                        type="radio" name="pregunta1opcion4" id="pregunta1opcion4"
+                                                        value="4">
+                                                    <label class="form-check-label" for="pregunta1opcion4">
+                                                        {{curso.quiz[0]?.opcion4}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="curso.existeQuiz" id="pregunta2" class="carousel-item">
+                                        <div class="content-carousel">
+                                            <div class="pr">
+                                                <!-- SEGUNDA PREGUNTA -->
+                                                <img src="{{curso.quiz[1]?.imagen}}" alt="">
+                                                <span id="pruebaxd">{{curso.quiz[1]?.pregunta}}</span>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption2" class="form-check-input"
+                                                        type="radio" name="pregunta2opcion1" id="pregunta2opcion1"
+                                                        value="1">
+                                                    <label class="form-check-label" for="pregunta2opcion1">
+                                                        {{curso.quiz[1]?.opcion1}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption2" class="form-check-input"
+                                                        type="radio" name="pregunta2opcion2" id="pregunta2opcion2"
+                                                        value="2">
+                                                    <label class="form-check-label" for="pregunta2opcion2">
+                                                        {{curso.quiz[1]?.opcion2}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption2" class="form-check-input"
+                                                        type="radio" name="pregunta2opcion3" id="pregunta2opcion3"
+                                                        value="3">
+                                                    <label class="form-check-label" for="pregunta2opcion3">
+                                                        {{curso.quiz[1]?.opcion3}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption2" class="form-check-input"
+                                                        type="radio" name="pregunta2opcion4" id="pregunta2opcion4"
+                                                        value="4">
+                                                    <label class="form-check-label" for="pregunta2opcion4">
+                                                        {{curso.quiz[1]?.opcion4}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="curso.existeQuiz" id="pregunta3" class="carousel-item">
+                                        <div class="content-carousel">
+                                            <div class="pr">
+                                                <!-- TERCERA PREGUNTA -->
+                                                <img src="{{curso.quiz[2]?.imagen}}" alt="">
+                                                <span id="pruebaxd">{{curso.quiz[0]?.pregunta}}</span>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption3" class="form-check-input"
+                                                        type="radio" name="pregunta3opcion1" id="pregunta3opcion1"
+                                                        value="1">
+                                                    <label class="form-check-label" for="pregunta3opcion1">
+                                                        {{curso.quiz[2]?.opcion1}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption3" class="form-check-input"
+                                                        type="radio" name="pregunta3opcion2" id="pregunta3opcion2"
+                                                        value="2">
+                                                    <label class="form-check-label" for="pregunta3opcion2">
+                                                        {{curso.quiz[2]?.opcion2}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption3" class="form-check-input"
+                                                        type="radio" name="pregunta3opcion3" id="pregunta3opcion3"
+                                                        value="3">
+                                                    <label class="form-check-label" for="pregunta3opcion3">
+                                                        {{curso.quiz[2]?.opcion3}}
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input [(ngModel)]="selectedOption3" class="form-check-input"
+                                                        type="radio" name="pregunta3opcion4" id="pregunta3opcion4"
+                                                        value="4">
+                                                    <label class="form-check-label" for="pregunta3opcion4">
+                                                        {{curso.quiz[2]?.opcion4}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button *ngIf="acabeCurso" class="carousel-control-prev" type="button"
+                                [attr.data-bs-target]="'#carouselPresentations'+j" data-bs-slide="prev" id="botonIzq">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button *ngIf="acabeCurso" class="carousel-control-next" type="button"
+                                [attr.data-bs-target]="'#carouselPresentations'+j" data-bs-slide="next" id="botonDer">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="modal-footer pr">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                (click)="acabeCurso=true">Close</button>
+                            <button type="submit" class="btn btn-primary" [hidden]="hideBtnIfActivitySuccess(curso)"
+                                [disabled]="acabeCurso">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
-<div class="contenedor">
-    <header id="headerCurso2" class="header-mods">
-        <h1 class="modh1">Curso 2</h1>
-        <span class="modspan">En este curso tus habilidades y conocimientos de scrum aumentaran considerablemente</span>
-    </header>
-    <div class="parent2">        
-        <button id="initialSun2" class="sun" [disabled]="!disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="!disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-        <button class="sun" [disabled]="disabled"><i class="fa-solid fa-book mod-icon" [ariaDisabled]="disabled"></i></button>
-    </div>
-    
 </div>

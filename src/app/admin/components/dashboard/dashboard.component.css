@@ -1,0 +1,110 @@
+.main-dashboard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 1400px;
+    min-height: 80vh;
+    /* border: solid #4497a2; */
+    margin-left: 280px;
+    
+}
+
+.col-cursos {
+    border: solid 1px rgb(247, 0, 255);
+    background-color: rgba(234, 0, 255, 0.384);
+}
+
+.col-actividades {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    border: solid 1px #16A085;
+    background-color: #16a08465;
+}
+
+.row>.modal{
+    padding-left: 0;
+}
+
+.header-mods {
+    align-items: center;
+    background-color: #4497a23a;
+    border: solid #4497a2;
+    background-size: 700px 200px;
+    color: black;
+    -moz-column-gap: 16px;
+    column-gap: 16px;
+    display: grid;
+    grid-auto-columns: 1fr min-content;
+    overflow: hidden;
+    padding: 16px;
+    position: relative;
+    border-radius: 13px;
+    row-gap: 3px;
+    width: 894.08px;
+}
+
+.mod-icon{
+    color: red;
+    font-size: 5.5em;
+    -webkit-animation: fa-bounce 1.5s;
+    -moz-animation: fa-bounce 1.5s;
+    -o-animation: fa-bounce 1.5s;
+    animation: fa-bounce 1.5s infinite;
+}
+
+
+
+.form-floating>.form-control~label::after{
+    background-color: transparent!important;
+    /* color: white; */
+}
+
+
+.form-floating>.form-control:focus~label::after{
+    background-color: transparent!important;
+    /* color: white; */
+}
+
+.form-floating>.form-control:focus~label{
+    background-color: transparent!important;
+    /* color: white; */
+    transform: scale(.85) translateY(-1.2rem) translateX(0.15rem);
+
+}
+
+.form-floating>.form-control:not(:placeholder-shown)~label{
+    transform: scale(.85) translateY(-1.2rem) translateX(0.15rem);
+
+}
+
+.content-carousel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#pruebaxd{
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+}
+
+.personalized-inputs{
+    border-radius: 0;
+    border-color: transparent;
+    /* border-bottom-color: #006d80; */
+    height: 40px;
+    border-bottom: 1px solid #006d80;
+    background-color: transparent!important;
+}
+
+
+.personalized-inputs:focus {
+    box-shadow: none!important;
+    border-color: transparent;
+    border-bottom-color: #008000;
+}

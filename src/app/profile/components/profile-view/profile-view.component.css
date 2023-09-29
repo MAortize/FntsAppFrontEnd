@@ -108,8 +108,8 @@ input#userProfile:disabled,#emailProfile:disabled{
     align-items: center;
 }
 
-#nise{    
-    filter: invert(1);
+.prueba{
+    color: red;
 }
 
 #colAchievements{
@@ -118,7 +118,10 @@ input#userProfile:disabled,#emailProfile:disabled{
 }
 
 #cardAchievements{
-    max-width: 100%!important;
+    /* max-width: 100%!important;
+     */
+     border: none;
+     width: 400px;
 }
 
 

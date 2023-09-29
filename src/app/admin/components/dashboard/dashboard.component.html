@@ -1,0 +1,140 @@
+<div class="main-dashboard">
+    <h2>Es importante recordar que solamente puedes agregar un curso a la vez</h2>
+    <form [formGroup]="curso">
+        <div class="row">
+            <div class="col col-cursos">
+                <h5>En esta sección ingresa toda la informacion perteneciente a nombre y descripcion del curso</h5>
+                <div class="form-floating form-floating-profile">
+                    <input [formControl]="cursoName" type="text" name="nombre-curso" id="nombreCurso"
+                        class="form-control personalized-inputs" value="" placeholder="nombreCurso">
+                    <label for="nombreCurso">Nombre del Curso</label>
+                </div>
+                <div class="form-floating form-floating-profile mb-3">
+                    <textarea [formControl]="cursoDesc" type="email" name="descp-curso" id="descpCurso"
+                        class="form-control personalized-inputs" value="" placeholder="descpCurso"
+                        style="height: 150px; margin-top: 40px;"></textarea>
+                    <label for="descpCurso">Descripcion del curso</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-actividades">
+            <h5>En esta sección debes ingresar cuantas actividades tendra el curso y asi mismo cuantas diapositivas
+                tendra
+                cada curso, como tambien si tendra quiz o no</h5>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating form-floating-profile">
+                        <select [(ngModel)]="cantActividades" id="selectCant" class="form-select mb-3"
+                            aria-label="cantidad actividades" style="width: 280px"
+                            (change)="addActividades(cantActividades)" [ngModelOptions]="{standalone:true}">
+                            <option value="1" selected>Cantidad de actividades</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div *ngFor="let item of activity.controls; let i = index" formArrayName="activity" class="row">
+                    <div class="col">
+                        <div class="form-floating form-floating-profile">
+                            <input [formControlName]="i" type="text" name="nombre-curso" id="Hola{{i}}"
+                                class="form-control personalized-inputs" value="" placeholder="nombreCurso"
+                                style="margin-bottom: 10px;">
+                            <label for="i">Nombre de Actividad {{i + 1}}</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button id="btnActividad{{i}}" (click)="agrActividad()" class="btn btn-outline-primary">Agregar informacion a la actividad</button>
+                    </div>
+                    <div class="col">
+                        <button id="btnActividad{{i}}" class="btn btn-outline-primary" data-bs-toggle="modal"
+                            [attr.data-bs-target]="'#modalActivity'+i">Agregar informacion a la actividad</button>
+                    </div>
+                    <div class="modal fade" id="modalActivity{{i}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" [attr.aria-labelledby]="i" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content bg-dark text-white">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Estas diligenciando la informacion de la actividad #
+                                        {{i+1}}</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <div  class="row">
+                                        <label for="imgActividad{{i}}Dipositiva">PRUEBA</label>
+                                        <div class="col">
+                                            <input type="file" id="imgActividad{{i}}Dipositiva"
+                                                (change)="onFileSelected($event)" />
+                                            <button id="btn" (click)="getFileByBase64()"
+                                                class="btn btn-outline-danger">SUBIR IMGN</button>
+                                            <div class="form-floating form-floating-profile mb-3">
+                                                <textarea type="text" name="descp-actividad" id="descpCurso"
+                                                    class="form-control personalized-inputs text-white" value=""
+                                                    placeholder="descpCurso"
+                                                    style="height: 150px; margin-top: 40px;"></textarea>
+                                                <label class="text-white" for="descpCurso">Descripcion del curso</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <img id="imagenDiapo" [src]="img1" alt="">
+                                        </div>
+                                    </div>
+                                    <div  class="row">
+                                        <label for="imgActividad{{i}}Dipositiva">PRUEBA</label>
+                                        <div class="col">
+                                            <input type="file" id="imgActividad{{i}}Dipositiva"
+                                                (change)="onFileSelected($event)" />
+                                            <button id="btn" (click)="getFileByBase64()"
+                                                class="btn btn-outline-danger">SUBIR IMGN</button>
+                                            <div class="form-floating form-floating-profile mb-3">
+                                                <textarea type="text" name="descp-actividad" id="descpCurso"
+                                                    class="form-control personalized-inputs text-white" value=""
+                                                    placeholder="descpCurso"
+                                                    style="height: 150px; margin-top: 40px;"></textarea>
+                                                <label class="text-white" for="descpCurso">Descripcion del curso</label>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col">
+                                            <img id="imagenDiapo" [src]="img" alt="">
+                                        </div> -->
+                                    </div>
+                                    <div  class="row">
+                                        <label for="imgActividad{{i}}Dipositiva">PRUEBA</label>
+                                        <div class="col">
+                                            <input type="file" id="imgActividad{{i}}Dipositiva"
+                                                (change)="onFileSelected($event)" />
+                                            <button id="btn" (click)="getFileByBase64()"
+                                                class="btn btn-outline-danger">SUBIR IMGN</button>
+                                            <div class="form-floating form-floating-profile mb-3">
+                                                <textarea type="text" name="descp-actividad" id="descpCurso"
+                                                    class="form-control personalized-inputs text-white" value=""
+                                                    placeholder="descpCurso"
+                                                    style="height: 150px; margin-top: 40px;"></textarea>
+                                                <label class="text-white" for="descpCurso">Descripcion del curso</label>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col">
+                                            <img id="imagenDiapo" [src]="img" alt="">
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Understood</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <pre>{{curso.value|json}}</pre>
+</div>

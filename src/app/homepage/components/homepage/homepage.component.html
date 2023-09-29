@@ -6,22 +6,21 @@
         <ul class="nav nav-pills flex-column mt-4 menu-left-mods">
             <li class="nav-item py-2 py-sm-0">
                 <a class="nav-link text-dark efect-btn" [routerLink]="['/learn']" routerLinkActive="active"
-                    id="nav-link-learn" aria-selected="true">
+                    id="nav-link-learn" [ariaSelected]="thereIsAdminEmail" [hidden]="thereIsAdminEmail">
                     <i id="i-learn" class="fs-5 fa-solid fa-book sizing-icons"></i><span
                         class="fs-5 ms-3 d-none d-sm-inline hidden">Aprender</span>
                 </a>
             </li>
             <li class="nav-item py-2 py-sm-0">
                 <a id="nav-link-go-over" class="nav-link text-dark efect-btn" [routerLink]="['/go-over']"
-                    routerLinkActive="active">
-                    <i id="i-go-over" class="fs-5 fa-solid fa-pen-to-square sizing-icons"></i><span
-                        class="fs-5 ms-3 d-none d-sm-inline hidden">Repasar</span>
+                    routerLinkActive="active" [hidden]="thereIsAdminEmail">
+                    <i id="i-go-over" class="fs-5 fa-solid fa-book-bookmark sizing-icons"></i><span
+                        class="fs-5 ms-3 d-none d-sm-inline hidden">Documentos de interes</span>
                 </a>
             </li>
-            <li class="nav-item py-2 py-sm-0">
-                <a id="nav-link-shop" class="nav-link text-dark efect-btn" [routerLink]="['/shop']"
-                    routerLinkActive="active">
-                    <i id="i-shop" class="fa-solid fa-shop sizing-icons"></i><span class="fs-5 ms-3 d-none d-sm-inline hidden">Tienda</span>
+            <li class="nav-item py-2 py-sm-0 dropdown open pb-3">
+                <a id="nav-link-profile" class="nav-link text-dark efect-btn" [routerLink]="['/admin']" [ariaSelected]="!thereIsAdminEmail" routerLinkActive="active" [hidden]="!thereIsAdminEmail">
+                    <i id="i-profile" class="fa-solid fa-user sizing-icons"></i><span class="fs-5 ms-3 d-none d-sm-inline hidden">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item py-2 py-sm-0">
@@ -33,7 +32,7 @@
             </li>
 
             <li class="nav-item py-2 py-sm-0 dropdown open pb-3">
-                <a id="nav-link-profile" class="nav-link text-dark efect-btn" [routerLink]="['/profile']" routerLinkActive="active">
+                <a id="nav-link-profile" class="nav-link text-dark efect-btn" [routerLink]="['/profile']" routerLinkActive="active" [hidden]="thereIsAdminEmail">
                     <i id="i-profile" class="fa-solid fa-user sizing-icons"></i><span class="fs-5 ms-3 d-none d-sm-inline hidden">Perfil</span>
                 </a>
             </li>
@@ -48,7 +47,7 @@
     <div class="col p-3 main-content">
         <router-outlet></router-outlet>
     </div>
-    <div class="bg-white p-2 col-auto col-md-3 col-lg-2 min-vh-100 d-flex flex-column sidebar-right-mods">
-        <app-rigth-menu></app-rigth-menu>
+    <div *ngIf="!thereIsAdminEmail" class="bg-white p-2 col-auto col-md-3 col-lg-2 min-vh-100 d-flex flex-column sidebar-right-mods">          
+        <app-rigth-menu *ngIf="!thereIsAdminEmail"></app-rigth-menu>
     </div>
 </div>

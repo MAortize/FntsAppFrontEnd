@@ -14,11 +14,8 @@
                 </div>
                 <div class="form-floating">
                     <input type="text" name="user-profile" id="userProfile" class="form-control personalized-inputs"
-                    value="{{nickName}}" placeholder="{{nickName}}" [disabled]="changeData">
+                        value="{{nickName}}" placeholder="{{nickName}}" [disabled]="changeData">
                     <label for="userProfile">Nombre de Usuario</label>
-                </div>
-                <div class="form-floating align-self-center">
-                    <button class="btn btn-outline-success" [disabled]="changeData">Confirmar envio de datos</button>
                 </div>
             </div>
         </div>
@@ -26,43 +23,38 @@
     <div class="d-flex m-3">
         <div class="row gp">
             <div class="col">
-                <input class="btn btn-outline-danger" type="button" value="Cambiar Contraseña"  data-bs-toggle="modal"
-                data-bs-target="#modalChangePassword">
+                <input class="btn btn-outline-danger" type="button" value="Cambiar Contraseña" data-bs-toggle="modal"
+                    data-bs-target="#modalChangePassword">
                 <div class="modal fade" id="modalChangePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true" data-bs-backdrop="static">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia tu contraseña</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <form>
+                            <form (ngSubmit)="changePass()" [formGroup]="formChangePass">
+                                <div class="modal-body">
                                     <div class="form-floating">
                                         <input type="password" id="inputName"
                                             class="form-control text-black personalized-inputs-modal"
-                                            placeholder="Andres" autocomplete="off" />
+                                            placeholder="Andres" autocomplete="off"
+                                            [formControl]="passwordRegisterControl" />
                                         <label for="inputName">Nueva Contraseña</label>
+                                        <app-error-forms-handle
+                                            [formControlErrorPasswordRegister]="passwordRegisterControl"
+                                            [input]='"Contraseña"'></app-error-forms-handle>
                                     </div>
-                                    <div class="form-floating">
-                                        <input type="password" id="inputName"
-                                            class="form-control text-black personalized-inputs-modal"
-                                            placeholder="Andres" autocomplete="off" />
-                                        <label for="inputName">Confirmar Contraseña</label>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar Contraseña</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <input (click)="activarCambioData()" type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
-                <label class="btn" type="button" for="btn-check-4">{{value}}</label>
             </div>
         </div>
     </div>
@@ -70,7 +62,7 @@
         <div class="row">
             <div class="col" id="colAchievements">
                 <div class="card scroll" id="cardAchievements">
-                    <app-achievements id="nise"></app-achievements>
+                    <app-achievements></app-achievements>
                 </div>
             </div>
             <div class="col align-self-center">

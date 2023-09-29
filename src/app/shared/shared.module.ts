@@ -6,31 +6,31 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 
 import { AchievementsComponent } from './components/achievements/achievements.component';
-import { PruebaComponent } from './components/prueba/prueba.component';
 import { RigthMenuComponent } from './components/rigth-menu/rigth-menu.component';
 import { RankingModule } from '../ranking/ranking.module';
 import { ErrorFormsHandleComponent } from './components/error-forms-handle/error-forms-handle.component';
+import { LearnModule } from '../learn/learn.module';
 
 
 
 
 @NgModule({
   declarations: [
-    AchievementsComponent,
-    PruebaComponent,
     RigthMenuComponent,
-    ErrorFormsHandleComponent
+    ErrorFormsHandleComponent,
+    AchievementsComponent
   ],
   imports: [
     CommonModule,
     SharedRoutingModule,
     provideFirestore(() => getFirestore()),
-    RankingModule
+    RankingModule,
+    LearnModule
   ],
   exports: [
-    AchievementsComponent,
     RigthMenuComponent,
-    ErrorFormsHandleComponent
+    ErrorFormsHandleComponent,
+    AchievementsComponent
   ]
 })
 export class SharedModule { }

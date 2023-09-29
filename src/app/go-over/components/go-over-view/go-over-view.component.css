@@ -1,0 +1,31 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1200px;
+    flex-wrap: wrap;
+}
+
+.card-header{
+    background-color: #c0bcbc79;
+}
+.card-footer{
+    background-color: #c0bcbc79;
+}
+.card-body{
+    background-color: #c0bcbc79;
+}
+
+.btn-success{
+    background-color: #006d80;
+    border-color: #006d80;
+}
+
+
+.mod-icon{
+    color: green;
+    /* font-size: 1.5em; */
+    margin-right: 10px;
+}
+
+

@@ -2,12 +2,12 @@ import { Injectable, Output } from '@angular/core';
 
 
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Auth, SignInMethod, signInWithPopup } from '@angular/fire/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from '@angular/fire/auth';
 
 import { Firestore, addDoc, collection, doc, getDoc, setDoc } from '@angular/fire/firestore';
 
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, delay } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import baseUrl from '../../../environments/environment';
 
@@ -74,10 +74,10 @@ export class AuthService {
     return sessionStorage.getItem('JWT');
   }
 
-  logInBack(user: UserModelo){
+  logInBack(user: UserModelo) {
     console.log(user);
     this.generateToken(user).subscribe(
-      (data:any) => {
+      (data: any) => {
         console.log(data);
         this.loginUser(data.token);
         this.getCurrentUser()
@@ -88,35 +88,40 @@ export class AuthService {
 
   signUp(user: UserModelo) {
     this.añadirUsuario(user);
-    createUserWithEmailAndPassword(getAuth(), user.email!, user.password!)
-      .then((userCredential) => {
-        const userRegister = userCredential.user
-        console.log(userRegister.uid);
-        Swal.fire({
-          title: 'Registro exitoso',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-          confirmButtonColor: '#008000'
-        }).then(() => {
-          const pathCollection = 'users'
-          const userFillingData = {
-            uid: userRegister.uid,
-            userName: user.username,
-            puntuacion: user.score,
-            urlPic: user.urlPicProfile
-          }
-          sessionStorage.setItem('uid', userRegister.uid!)
-          sessionStorage.setItem('urlPic', user.urlPicProfile!)
-          sessionStorage.setItem('username', user.username!)
-          setDoc(doc(this.db, pathCollection, userRegister.uid), userFillingData)
-          userRegister.getIdToken().then((token) => {
-            this.guardarToken(token)
-            this.router.navigate(['learn'])
-          })
+    createUserWithEmailAndPassword(getAuth(), user.email!, user.password!).then((userCredential) => {
+      const userRegister = userCredential.user
+      console.log(userRegister);
+      Swal.fire({
+        title: 'Registro exitoso',
+        text: 'Tu registro fue exitoso recuerda verificar tu correo electronico para que puedas iniciar sesion',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#008000'
+      }).then(() => {
+        sendEmailVerification(getAuth().currentUser)
+        const pathCollection = 'users'
+        const userFillingData = {
+          uid: userRegister.uid,
+          userName: user.username,
+          puntuacion: user.score,
+          urlPic: user.urlPicProfile
+        }
+        sessionStorage.setItem('uid', userRegister.uid!)
+        sessionStorage.setItem('urlPic', user.urlPicProfile!)
+        sessionStorage.setItem('username', user.username!)
+        sessionStorage.setItem('email', user.email!)
+        sessionStorage.setItem('puntuacion', user.score.toString())
+        userRegister.getIdToken().then((token) => {
+          this.guardarToken(token)
         })
-      }).catch(error => {
-        console.log('Aca salta el error', error);
+        setDoc(doc(this.db, pathCollection, userRegister.uid), userFillingData).then(()=>{
+          window.location.reload()
+        })
+        
       })
+    }).catch(error => {
+      console.log('Aca salta el error', error);
+    });
   }
 
 
@@ -125,20 +130,31 @@ export class AuthService {
     signInWithEmailAndPassword(getAuth(), user.email!, user.password!)
       .then((userCredential) => {
         const userLogged = userCredential.user;
-        console.log(userLogged.uid);
-        Swal.fire({
-          title: 'Iniciando Sesion',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-          confirmButtonColor: '#008000'
-        }).then(() => {
-          sessionStorage.setItem('uid', userLogged.uid!);
-          sessionStorage.setItem('email', userLogged.email!);
-          userLogged.getIdToken().then((token) => {
-            this.guardarToken(token);
-            this.getInfoUser()
-          });
-        })
+        // console.log(userLogged.uid);
+        console.log(userCredential);
+        if (userLogged.emailVerified) {
+          Swal.fire({
+            title: 'Iniciando Sesión',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#008000'
+          }).then(() => {
+            sessionStorage.setItem('email', userLogged.email!);
+            sessionStorage.setItem('uid', userLogged.uid!);
+            userLogged.getIdToken().then((token) => {
+              this.guardarToken(token);
+              this.getInfoUser(userLogged.email)
+            });
+          })
+        } else {
+          Swal.fire({
+            title: 'Verificacion de correo obligatoria',
+            text: 'Debes verificar tu correo electronico para iniciar sesión',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#008000'
+          })
+        }
       })
       .catch((error) => {
         console.log(error.message);
@@ -167,23 +183,31 @@ export class AuthService {
 
 
   signOut() {
-    sessionStorage.removeItem('token')
-    sessionStorage.removeItem('email')
-    sessionStorage.removeItem('expira')
-    sessionStorage.removeItem('uid')
-    sessionStorage.removeItem('urlPic')
-    sessionStorage.removeItem('username')
-    sessionStorage.removeItem('JWT')
+
+    sessionStorage.clear()
+    // sessionStorage.removeItem('token')
+    // sessionStorage.removeItem('email')
+    // sessionStorage.removeItem('adminEmail')
+    // sessionStorage.removeItem('expira')
+    // sessionStorage.removeItem('uid')
+    // sessionStorage.removeItem('urlPic')
+    // sessionStorage.removeItem('username')
+    // sessionStorage.removeItem('JWT')
+    // sessionStorage.removeItem('puntuacion')
   }
 
-  private getInfoUser() {
+  private getInfoUser(email?: string | null) {
     const pathCollection = '/users/' + sessionStorage.getItem('uid')
-    const docInstance =  doc(this.db, pathCollection)
-    getDoc(docInstance).then((doc)=>{
+    const docInstance = doc(this.db, pathCollection)
+    // if (this.esAdmin(email)) {
+    //   this.router.navigate(['admin'])
+    // }
+    getDoc(docInstance).then((doc) => {
       if (doc && doc.exists()) {
         const data = doc.data();
         sessionStorage.setItem("username", data['userName'])
         sessionStorage.setItem("urlPic", data['urlPic'])
+        sessionStorage.setItem("puntuacion", data['puntuacion'])
         this.router.navigate(['learn'])
       }
     })
@@ -215,15 +239,6 @@ export class AuthService {
   //METODO PARA VALIDAR SI ESTA AUTENTICADO Y PERMITIR QUE ENTRE A LAS DEMAS VENTANAS
   estaAutenticado(): boolean {
 
-    // let tokenStr = sessionStorage.getItem('JWT');
-    // if (this.userToken.length < 2 || tokenStr == undefined || tokenStr == '' || tokenStr == null) {
-    //   this.loggedIn = false;
-    //   return false
-    // } else {
-    //   return true;
-    // }
-
-
     const expira = Number(sessionStorage.getItem('expira'));
     const hoy = new Date();
 
@@ -234,6 +249,16 @@ export class AuthService {
       return true;
     } else {
       this.loggedIn = false;
+      return false
+    }
+
+  }
+
+
+  esAdmin(email?: string | null): boolean {
+    if (email === 'adminfnts@gmail.com') {
+      return true
+    } else {
       return false
     }
 

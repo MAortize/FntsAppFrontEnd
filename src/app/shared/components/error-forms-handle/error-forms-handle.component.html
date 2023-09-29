@@ -17,7 +17,7 @@
 <div *ngIf="formControlErrorPasswordRegister?.invalid && formControlErrorPasswordRegister?.touched">
     <!-- validadores de contraseña Registro -->
     <div *ngIf="formControlErrorPasswordRegister.errors?.['required']" class="error">La {{input}} es requerida.</div>
-    <div *ngIf="formControlErrorPasswordRegister.errors?.['pattern']" class="error">La {{input}} no tiene el formato correcto.</div>
+    <div *ngIf="formControlErrorPasswordRegister.errors?.['pattern']" class="error">La {{input}} no tiene el formato correcto, recuerda que debe contar con al menos un caracter, numero y mayuscula</div>
     <!-- ----- -->
 </div>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DocumentData } from '@angular/fire/firestore';
-import { AchievementService } from '../../services/achievement.service';
+
 
 @Component({
   selector: 'app-rigth-menu',
@@ -13,23 +13,22 @@ export class RigthMenuComponent implements OnInit {
   
   urlImgUserInSession: string|null;
   usernameInSession: string|null;
+  scoreUserInSesssion: string|null
 
+  miEstilo: any = {
+    'background-color': 'transparent',
+    'color': 'white',
+  };
 
   
-  constructor(protected service: AchievementService) {
+  constructor() {
     this.urlImgUserInSession = sessionStorage.getItem('urlPic')
     this.usernameInSession = sessionStorage.getItem('username')
+    this.scoreUserInSesssion = sessionStorage.getItem('puntuacion')
   }
   
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
-  prueba(){
-    
-    
-    
-  }
 
 
   
