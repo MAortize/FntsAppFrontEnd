@@ -49,22 +49,22 @@ export class LearnService {
   }
 
 
-  sumPuntos() {
+  async sumPuntos() {
     const docInstance = doc(this.db, this.pathCollection)
     let puntuacionFromBd; 
-    getDoc(docInstance).then((doc) => {
+    await getDoc(docInstance).then((doc) => {
       if (doc && doc.exists()) {
         const data = doc.data();
         puntuacionFromBd = data['puntuacion']
-        console.log('Antes de sumar', puntuacionFromBd);
+        // console.log('Antes de sumar', puntuacionFromBd);
         const updateData = {
           puntuacion: puntuacionFromBd + 10
         }
         updateDoc(docInstance, updateData).then(() => {
-          console.log('actualice la puntuacion');
+          // console.log('actualice la puntuacion');
           sessionStorage.removeItem('puntuacion')
           sessionStorage.setItem('puntuacion', updateData.puntuacion)
-          console.log('Despues de sumar', updateData.puntuacion);
+          // console.log('Despues de sumar', updateData.puntuacion);
         })
         
       }

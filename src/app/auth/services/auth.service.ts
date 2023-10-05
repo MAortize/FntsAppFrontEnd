@@ -2,7 +2,7 @@ import { Injectable, Output } from '@angular/core';
 
 
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from '@angular/fire/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, setPersistence } from '@angular/fire/auth';
 
 import { Firestore, addDoc, collection, doc, getDoc, setDoc } from '@angular/fire/firestore';
 
@@ -75,10 +75,10 @@ export class AuthService {
   }
 
   logInBack(user: UserModelo) {
-    console.log(user);
+    // console.log(user);
     this.generateToken(user).subscribe(
       (data: any) => {
-        console.log(data);
+        // console.log(data);
         this.loginUser(data.token);
         this.getCurrentUser()
       }
@@ -90,15 +90,14 @@ export class AuthService {
     this.añadirUsuario(user);
     createUserWithEmailAndPassword(getAuth(), user.email!, user.password!).then((userCredential) => {
       const userRegister = userCredential.user
-      console.log(userRegister);
+      // console.log(userRegister);
       Swal.fire({
         title: 'Registro exitoso',
-        text: 'Tu registro fue exitoso recuerda verificar tu correo electronico para que puedas iniciar sesion',
+        text: 'Tu registro fue exitoso recuerda verificar tu correo electrónico para que puedas iniciar sesión',
         icon: 'success',
         confirmButtonText: 'Ok',
         confirmButtonColor: '#008000'
       }).then(() => {
-        sendEmailVerification(getAuth().currentUser)
         const pathCollection = 'users'
         const userFillingData = {
           uid: userRegister.uid,
@@ -113,6 +112,7 @@ export class AuthService {
         sessionStorage.setItem('puntuacion', user.score.toString())
         userRegister.getIdToken().then((token) => {
           this.guardarToken(token)
+          sendEmailVerification(getAuth().currentUser)
         })
         setDoc(doc(this.db, pathCollection, userRegister.uid), userFillingData).then(()=>{
           window.location.reload()
@@ -130,8 +130,9 @@ export class AuthService {
     signInWithEmailAndPassword(getAuth(), user.email!, user.password!)
       .then((userCredential) => {
         const userLogged = userCredential.user;
+        sessionStorage.setItem('currentUser', JSON.stringify(userLogged))
         // console.log(userLogged.uid);
-        console.log(userCredential);
+        // console.log(userCredential);
         if (userLogged.emailVerified) {
           Swal.fire({
             title: 'Iniciando Sesión',
@@ -145,11 +146,12 @@ export class AuthService {
               this.guardarToken(token);
               this.getInfoUser(userLogged.email)
             });
+
           })
         } else {
           Swal.fire({
-            title: 'Verificacion de correo obligatoria',
-            text: 'Debes verificar tu correo electronico para iniciar sesión',
+            title: 'Verificación de correo obligatoria',
+            text: 'Debes verificar tu correo electrónico para iniciar sesión',
             icon: 'error',
             confirmButtonText: 'Ok',
             confirmButtonColor: '#008000'
@@ -157,7 +159,7 @@ export class AuthService {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
         if (error.message === "Firebase: Error (auth/wrong-password).") {
           const errPassword = "Contraseña incorrecta"
           Swal.fire({

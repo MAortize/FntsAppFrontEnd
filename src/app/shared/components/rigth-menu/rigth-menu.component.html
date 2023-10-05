@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-md-6 width-media align-self-center">
                     <h5 class="card-title m-r">{{usernameInSession}}</h5>
-                    <div class="card-subtitle hidden">Puntuacion: {{scoreUserInSesssion}}</div>
+                    <div class="card-subtitle hidden">Puntuación: {{scoreUserInSesssion}}</div>
                 </div>
             </div>
             <!-- <img src="../../../../assets/logoFNTSV5.png" class="card-img-top" alt="..."> -->
@@ -15,7 +15,7 @@
     </li>
     <li>
         <div class="show">
-            <button class="btn btn-outline-primary">Ver logros</button>
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/profile']">Ver logros</button>
         </div>
     </li>
     <li>
@@ -30,13 +30,13 @@
     </li>
     <li>
         <div class="show">
-            <button class="btn btn-outline-primary">Ver ranking de scrummies</button>
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/ranking']">Ver ranking de scrummies</button>
         </div>
     </li>
     <li>
         <div class="hidden" style="max-width: 100%;">
             <div class="">
-                <img src="../../../../assets/Male_idle.gif" class="rotate" alt="">
+                <img src="../../../../assets/avatar-hombre-gifs/Male_idle.gif" class="rotate" alt="">
             </div>
         </div>
     </li>

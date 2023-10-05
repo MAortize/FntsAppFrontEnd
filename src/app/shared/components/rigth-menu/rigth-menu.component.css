@@ -1,3 +1,217 @@
+@media only screen and (max-height: 768px){
+    .sidebar-right-mods{
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: center!important;
+        align-items: center;
+        flex-wrap: wrap!important;
+        min-height: 0!important;
+        min-width: 100%;
+        position: fixed!important;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: none;
+        margin: 0!important;
+        padding: 0!important;
+        margin-top: auto;
+        
+    }
+    
+    .show {
+        align-self: center;
+        display: block!important;
+    }
+    
+    .hidden {
+        display: none!important;
+    }
+    
+    
+    
+    .rotate {
+        height: 150px!important;
+    }
+    
+    .card {
+        border: none!important;
+        background-color: transparent!important;
+        min-height: fit-content;
+        align-self: center;
+    }
+    
+    .img-resize {
+        width: 64px!important;
+        height: 64px!important;
+        margin-left: 0;
+        margin-right: 70px;
+    }
+
+    .m-r{
+        margin-left: 8px!important;
+    }
+}
+
+@media only screen and (max-height: 563.33px){
+    .sidebar-right-mods{
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: center!important;
+        align-items: center;
+        flex-wrap: wrap!important;
+        min-height: 0!important;
+        min-width: 100%;
+        position: fixed!important;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: none;
+        margin: 0!important;
+        padding: 0!important;
+        margin-top: auto;
+        
+    }
+    
+    
+    /* .width-media{
+        width: 66.33333333%!important;
+    } */
+    
+    .show {
+        align-self: center;
+        display: block!important;
+    }
+    
+    .hidden {
+        display: none!important;
+    }
+    
+    
+    
+    .rotate {
+        height: 150px!important;
+    }
+    
+    .card {
+        border: none!important;
+        background-color: transparent!important;
+        min-height: fit-content;
+        align-self: center;
+    }
+    
+    .img-resize {
+        width: 64px!important;
+        height: 64px!important;
+        margin-left: 0;
+        margin-right: 70px;
+    }
+
+    .m-r{
+        margin-left: 8px!important;
+    }
+}
+@media only screen and (max-height: 611px){
+    .sidebar-right-mods{
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(180, 41%, 35%) 15%,
+            hsl(189, 41%, 30%) 35%,
+            hsl(199, 41%, 20%) 75%,
+            hsl(192, 40%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(187, 41%, 45%) 15%,
+            hsl(197, 41%, 30%) 35%,
+            hsl(191, 41%, 20%) 75%,
+            hsl(189, 40%, 19%) 80%,
+            transparent 100%);
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: center!important;
+        align-items: center;
+        flex-wrap: wrap!important;
+        min-height: 0!important;
+        min-width: 100%;
+        position: fixed!important;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: none;
+        margin: 0!important;
+        padding: 0!important;
+        margin-top: auto;
+        
+    }
+    
+    
+    /* .width-media{
+        width: 66.33333333%!important;
+    } */
+    
+    .show {
+        align-self: center;
+        display: block!important;
+    }
+    
+    .hidden {
+        display: none!important;
+    }
+    
+    
+    
+    .rotate {
+        height: 150px!important;
+    }
+    
+    .card {
+        border: none!important;
+        background-color: transparent!important;
+        min-height: fit-content;
+        align-self: center;
+    }
+    
+    .img-resize {
+        width: 64px!important;
+        height: 64px!important;
+        margin-left: 0;
+        margin-right: 70px;
+    }
+
+    .m-r{
+        margin-left: 8px!important;
+    }
+}
+
+
+
+
+
 @media only screen and (min-width: 768px) {
     .col-md-6 {
         flex: 1 0 auto!important;
@@ -8,8 +222,17 @@
         width: 70px!important;
         height: 70px!important;
     }
+
+    
 }
 
+
+
+.btn-outline-primary{
+    background-color: #5ada6f52 !important;
+    border: #5ada6fe8 !important;
+    color: white;
+}
 
 
 @media only screen and (max-width: 1068px) {
@@ -132,6 +355,8 @@
     border-radius: 50px;
     margin-left: 5px;
 }
+
+
 
 
 

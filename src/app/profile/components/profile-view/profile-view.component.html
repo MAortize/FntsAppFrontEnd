@@ -10,7 +10,7 @@
                 <div class="form-floating form-floating-profile">
                     <input type="email" name="email-profile" id="emailProfile" class="form-control personalized-inputs"
                         value="{{email}}" placeholder="{{email}}" [disabled]="changeData">
-                    <label for="emailProfile">Correo Electronico</label>
+                    <label for="emailProfile">Correo Electrónico</label>
                 </div>
                 <div class="form-floating">
                     <input type="text" name="user-profile" id="userProfile" class="form-control personalized-inputs"
@@ -25,22 +25,22 @@
             <div class="col">
                 <input class="btn btn-outline-danger" type="button" value="Cambiar Contraseña" data-bs-toggle="modal"
                     data-bs-target="#modalChangePassword">
-                <div class="modal fade" id="modalChangePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true" data-bs-backdrop="static">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia tu contraseña</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form (ngSubmit)="changePass()" [formGroup]="formChangePass">
+                <form (ngSubmit)="changePass()" [formGroup]="formChangePass">
+                    <div class="modal fade" id="modalChangePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true" data-bs-backdrop="static">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia tu contraseña</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
                                 <div class="modal-body">
                                     <div class="form-floating">
                                         <input type="password" id="inputName"
                                             class="form-control text-black personalized-inputs-modal"
                                             placeholder="Andres" autocomplete="off"
-                                            [formControl]="passwordRegisterControl" />
+                                            [formControl]="passwordRegisterControl"/>
                                         <label for="inputName">Nueva Contraseña</label>
                                         <app-error-forms-handle
                                             [formControlErrorPasswordRegister]="passwordRegisterControl"
@@ -49,12 +49,12 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-primary">Guardar Contraseña</button>
+                                    <button type="submit" class="btn btn-primary"[disabled]="!formChangePass.valid">Guardar Contraseña</button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -67,7 +67,10 @@
             </div>
             <div class="col align-self-center">
                 <div class="">
-                    <img src="../../../../assets/Male_idle.gif" class="rotate" alt="">
+                    <div class="burbuja animated">
+                        <p class="text-animated">Ya llevamos {{actividad-1}} logros 🐱‍🏍</p>
+                    </div>
+                    <img src="../../../../assets/avatar-hombre-gifs/Male_wait.gif" class="rotate" alt="">
                 </div>
             </div>
         </div>

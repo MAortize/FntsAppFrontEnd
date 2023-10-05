@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { AbstractControl, FormBuilder, FormControl, FormGroup, PatternValidator, Validators } from '@angular/forms';
 import { UserModelo } from 'src/app/shared/models/user.model';
+import { LearnService } from 'src/app/learn/services/learn.service';
 
 
 
@@ -16,14 +17,14 @@ import { UserModelo } from 'src/app/shared/models/user.model';
 })
 export class AuthCardComponent implements OnInit {
 
-  
+
   imgPerfilHombres: any[] = ['../../../../assets/img-hombres/hombre_1.png',
-  '../../../../assets/img-hombres/hombre_2.png',
-  '../../../../assets/img-hombres/hombre_3.png']
+    '../../../../assets/img-hombres/hombre_2.png',
+    '../../../../assets/img-hombres/hombre_3.png']
 
   imgPerfilMujeres: any[] = ['../../../../assets/img-mujeres/mujer_1.png',
-  '../../../../assets/img-mujeres/mujer_2.png',
-  '../../../../assets/img-mujeres/mujer_3.png']
+    '../../../../assets/img-mujeres/mujer_2.png',
+    '../../../../assets/img-mujeres/mujer_3.png']
 
 
   formRegister!: FormGroup;
@@ -41,12 +42,16 @@ export class AuthCardComponent implements OnInit {
 
   regexPassword: string = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/';
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
-    
-    
+  userCourseActivity: any = []
+
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private learnService: LearnService) {
+
+
   }
 
   ngOnInit(): void {
+    
+
     this.firstNameControl = new FormControl('', Validators.required);
     this.lastNameControl = new FormControl('', Validators.required);
     this.emailRegisterControl = new FormControl('', [Validators.required, Validators.email])
@@ -62,40 +67,42 @@ export class AuthCardComponent implements OnInit {
       userName: this.userNameControl,
       password: this.passwordRegisterControl
     })
-    
+
     this.formLogin = this.formBuilder.group({
       email: this.emailLoginControl,
       password: this.passwordLoginControl
     })
+
+
   }
 
   contraseñaCorrecta(control: AbstractControl): { [key: string]: any } | null {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
     const cumpleRegex = regex.test(control.value);
-   
-   return cumpleRegex ? { regex: true } : null;
+
+    return cumpleRegex ? { regex: true } : null;
   }
 
   registroUser(user: UserModelo) {
     this.authService.añadirUsuario(user).subscribe({
-      next: (data) =>  console.log(data),
+      next: (data) => console.log(data),
       error: (err) => console.log(err)
     })
   }
-  
-  logSelecciona(path:string) {
+
+  logSelecciona(path: string) {
     this.urlPic = path
-    console.log('urlPic',this.urlPic);
+    // console.log('urlPic', this.urlPic);
   }
 
   logIn() {
-    this.authService.signIn(this.fillDataUserLogin(this.userModel))    
+    this.authService.signIn(this.fillDataUserLogin(this.userModel))
   }
 
-  register() {   
+  register() {
     this.authService.signUp(this.fillDataUserRegister(this.userModel))
     this.registroUser(this.fillDataUserRegister(this.userModel));
-    console.log('Estoy haciendo un registro');    
+    // console.log('Estoy haciendo un registro');
   }
 
   logOut() {
@@ -114,17 +121,17 @@ export class AuthCardComponent implements OnInit {
     return user
   }
 
-  fillDataUserRegister(user: UserModelo): UserModelo{
+  fillDataUserRegister(user: UserModelo): UserModelo {
     const userName = this.formRegister.get('userName')?.value
     const firsName = this.formRegister.get('firstName')?.value
-    
+
     const lastName = this.formRegister.get('lastName')?.value
     const email = this.formRegister.get('email')?.value
     const password = this.formRegister.get('password')?.value
     const levelCourse = 0
     const score = 0
     const urlPic = this.urlPic
-    
+
     user = new UserModelo()
 
     user.username = userName

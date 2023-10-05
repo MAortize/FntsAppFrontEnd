@@ -6,6 +6,7 @@ import { ProfileViewComponent } from './components/profile-view/profile-view.com
 import { SharedModule } from '../shared/shared.module';
 import { LearnModule } from '../learn/learn.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileService } from './services/profile.service';
 
 
 @NgModule({
@@ -18,6 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     LearnModule,
     ReactiveFormsModule
+  ],
+  providers:[
+    ProfileService
   ]
 })
 export class ProfileModule { }

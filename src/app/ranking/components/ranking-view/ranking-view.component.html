@@ -6,10 +6,11 @@
 </div>
 
 <div *ngIf="cargando" class="mod">
+    <h1 style="margin-left: 70px;">Top scrummies<i class="fa-solid fa-trophy"></i></h1>
     <table class="table">
         <thead>
             <tr>
-                <th>Posicion</th>
+                <th>Posición</th>
                 <th>UserName</th>
                 <th>Puntos</th>
                 <th>Avatar</th>
@@ -25,21 +26,3 @@
         </tbody>
     </table>
 </div>
-<!-- <table bordercolor="red" height="10px" class="mod-table">
-    <thead>
-        <tr>
-            <th id="cellImg" scope="col">Posición</th>
-            <th scope="col">UserName</th>
-            <th scope="col">Puntos</th>
-            <th scope="col">Avatar</th>
-        </tr>
-    </thead>
-    <tbody class="">
-        <tr *ngFor="let item of listaDeUsuarios; let i = index" class="table-secondary">
-            <th id="cellImg">{{i+1}}</th>
-            <td id="cellImg">{{item['userName']}}</td>
-            <td id="cellImg">{{item['puntuacion']}}</td>
-            <td id="cellImg"><img class="img-resize" src="{{item['urlPic']}}" alt=""></td>
-        </tr>
-    </tbody>
-</table> -->

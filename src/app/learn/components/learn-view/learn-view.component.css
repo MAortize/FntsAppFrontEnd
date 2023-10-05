@@ -1,3 +1,10 @@
+@media only screen and (max-width: 1280px){
+    .contenedor{
+        margin-left: 60px;
+    }
+}
+
+
 @media only screen and (max-width: 1068px) {
     .mod {
         margin-top: 80px;
@@ -6,9 +13,14 @@
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 .contenedor {
     display: flex;
@@ -18,20 +30,39 @@
     /* min-height: 100vh; */
 }
 
-.content-carousel{
+.content-carousel {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.pr{
+
+.btn-primary {
+    background-color: #006d80;
+    border-color: #006d80;
+}
+
+.pr {
     position: relative;
     z-index: 3;
 }
 
+.content-carousel-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    flex-direction: column;
+}
 
-.content-carousel#quiz{
+
+.carousel-indicators {
+    position: fixed;
+}
+
+
+.content-carousel#quiz {
     display: flex;
     flex-direction: column;
     /* align-items: normal; */
@@ -39,18 +70,20 @@
     /* min-height: 80vh; */
 }
 
-.carousel-control-next, .carousel-control-prev{
+.carousel-control-next,
+.carousel-control-prev {
     position: fixed;
 }
 
-#pruebaxd{
+#pruebaxd {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -o-pre-wrap;
+    font-size: x-large;
 }
 
 
-.mod-img{
+.mod-img {
     height: 96px;
     width: 96px;
     margin-left: 15px;
@@ -74,6 +107,12 @@
     width: 894.08px;
 }
 
+
+.pr-imagen {
+    width: 1080px;
+    height: 800px;
+}
+
 .modh1 {
     font-size: 25px;
     color: white;
@@ -82,7 +121,7 @@
     margin: 0;
 }
 
-.modspan{
+.modspan {
     color: #fff;
 
 }
@@ -93,15 +132,16 @@
     align-items: center;
 }
 
-.sun#initialSun{
+.sun#initialSun {
     margin-top: 30px;
 }
 
-.pruebaaaaaaas{
+.pruebaaaaaaas {
     margin-right: 50px;
 }
 
-.sun#curso0btnActivity0,.sun#curso1btnActivity0{
+.sun#curso0btnActivity0,
+.sun#curso1btnActivity0 {
     margin-top: 20px;
 }
 
@@ -111,40 +151,103 @@
     font-family: Jost;
     font-size: 1.2rem;
     padding: 0.05rem 1.25rem;
-  }
+}
 
-.sun{
+.sun {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px!important;
+    margin-bottom: 20px !important;
     width: 5em;
     height: 4.425em;
-    background: rgb(0,30,36);
-    background: linear-gradient(149deg, rgba(0,30,36,1) 21%, rgba(9,102,121,1) 62%, rgba(0,255,209,1) 100%);
+    background: rgb(0, 30, 36);
+    background: linear-gradient(149deg, rgba(0, 30, 36, 1) 21%, rgba(9, 102, 121, 1) 62%, rgba(0, 255, 209, 1) 100%);
     border-radius: 50%/50%;
-    border: none;    
-    box-shadow: inset 0px -10px 0px rgba(0,30,36, 0.7), inset -2px -2px 3px rgba(255, 255, 253, 0.1), 2px 2px 10px rgba(255, 255, 255, 0.1);
+    border: none;
+    box-shadow: inset 0px -10px 0px rgba(0, 30, 36, 0.7), inset -2px -2px 3px rgba(255, 255, 253, 0.1), 2px 2px 10px rgba(255, 255, 255, 0.1);
 }
 
-.sun:active{
+.sun:active {
     box-shadow: none;
     transform: translateY(8px);
 }
 
 
-button.sun:disabled{
-    background: #b4b4b4!important;
+button.sun:disabled {
+    background: #b4b4b4 !important;
     box-shadow: inset 0px -10px 0px rgba(69, 75, 77, 0.7), inset -2px -2px 3px rgba(255, 255, 253, 0.1), 2px 2px 10px rgba(255, 255, 255, 0.1);
     opacity: 0.4;
 }
 
-button.sun:disabled>i{
+button.sun:disabled>i {
     color: #727272;
 }
 
-.mod-icon{
+.mod-icon {
     color: white;
     font-size: 1.5em;
 }
 
+
+/* Estilo para el contenedor de la burbuja */
+.burbuja {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: auto;
+    position: relative;
+    margin: 20px;
+}
+
+/* Pico de la burbuja */
+.burbuja::before {
+    content: "";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+}
+
+/* Pico en la parte inferior */
+.burbuja::before {
+    content: "";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    bottom: -20px;
+    /* Ajusta la distancia del pico al borde inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    border-color: #f0f0f0 transparent transparent transparent;
+}
+
+
+/* Estilo del texto dentro de la burbuja */
+.burbuja p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.text-animated {
+    border-right: .15em solid #18ecd0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s steps(40) 1s 1 normal both, blink 1s steps(1) infinite;
+}

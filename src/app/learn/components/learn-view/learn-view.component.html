@@ -1,47 +1,144 @@
+<button id="hiddenPrueba" class="btn btn-primary" data-bs-target="#modalHistory" data-bs-toggle="modal" hidden></button>
+<div>
+    <div class="modal fade" id="modalHistory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false" #nise>
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Historia de fnts</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="carouselExampleIndicators" class="carousel slide">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
+                                aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
+                                aria-label="Slide 8"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8"
+                                aria-label="Slide 9"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <h2>
+                                    ¡Hola! Para nosotros es muy importante que estés aquí. Te recomendamos leer la
+                                    historieta; es corta, así que no te preocupes.
+                                    Una vez termines de leerla y completes la primera actividad en este camino, no volverá a
+                                    aparecer, te lo aseguramos 😉.
+                                    Además, sabrás quién es ese personaje que aparece en la esquina inferior derecha de tu
+                                    pantalla y en la sección de tu perfil. ¡Suerte! 🤞😊
+                                    Clickea la flecha de la derecha o muévete entre diapositivas dando clic en las líneas entre cortadas de abajo.
+
+                                    Recuerda que si le das al botón de empezar, te saltas todas las diapositivas.
+                                </h2>
+                            </div>
+                            <div class="carousel-item ">
+                                <img src="../../../../assets/imgs-history/1.png" class="d-block w-100 pr-imagen" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../../../../assets/imgs-history/2.png" class="d-block w-100 pr-imagen" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../../../../assets/imgs-history/3.png" class="d-block w-100 pr-imagen" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../../../../assets/imgs-history/4.png" class="d-block w-100 pr-imagen" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../../../../assets/imgs-history/5.png" class="d-block w-100 pr-imagen" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../../../../assets/imgs-history/6.png" class="d-block w-100 pr-imagen" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../../../../assets/imgs-history/7.png" class="d-block w-100 pr-imagen" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <div class="content-carousel-img">
+                                    <div class="burbuja animated">
+    
+                                        <p class="text-animated">Por si tenías dudas, sí, soy noobie. Ayúdame a ser como
+                                            scrummie y aprenderemos juntos😎. Si no me encuentras en la pantalla, búscame en el perfil o ver logros.</p>
+    
+                                    </div>
+                                    <img src="../../../../assets/avatar-hombre-gifs/Male_talk.gif" id="img-initial" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeModal" type="button" class="btn btn-success pr"
+                        data-bs-dismiss="modal">Empezar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div *ngFor="let item of cursos;let i = index" class="contenedor">
     <header id="headerCurso{{i}}" class="header-mods">
-        <h1 class="modh1">{{listCursos[i].name}}</h1>
-        <span class="modspan">{{listCursos[i].description}}</span>
+        <h1 class="modh1">{{listCursos[i]?.name}}</h1>
+        <span class="modspan">{{listCursos[i]?.description}}</span>
     </header>
     <div *ngFor="let curso of item; let j = index">
         <button id="curso{{i}}btnActivity{{j}}" class="sun" data-bs-toggle="modal"
-            [attr.data-bs-target]="'#firstLookActivity'+j" [disabled]="recibe(curso)" (click)="prueba(j)"><i
+            [attr.data-bs-target]="'#firstLookCourse'+i+'Activity'+j" [disabled]="recibe(curso)" (click)="prueba(j,i)"><i
                 class="fa-solid fa-book mod-icon"></i></button>
-                
+
 
         <!-- Modal -->
-        <div class="modal fade" id="firstLookActivity{{j}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="firstLookCourse{{i}}Activity{{j}}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Importante</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{curso.nombreActividad}}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div *ngIf="!hideBtnIfActivitySuccess(curso)" class="modal-body">
-                        Descripcion: En esta actividad encontraras.....
-                        <br>
-                        Si la finalizas sumaras 10 puntos!!
+                        Si la finalizas sumarás 10 puntos!!
                     </div>
                     <div *ngIf="hideBtnIfActivitySuccess(curso)" class="modal-body">
-                        Descripcion: En esta actividad encontraras.....
-                        <br>
-                        Ya finalizaste esta actividad pero siempre puedes volver a ver su informacion :D
+                        Ya finalizaste esta actividad pero siempre puedes volver a ver su información 😃
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button *ngIf="!hideBtnIfActivitySuccess(curso)" data-bs-toggle="modal"
-                            [attr.data-bs-target]="'#staticBackdrop'+j" class="btn btn-primary">Resolver
+                        <button id="closeModalCoursefirstLookCourse{{i}}Activity{{j}}" type="button" class="btn btn-danger"
+                            data-bs-dismiss="modal">Cerrar</button>
+                        <button id="resolverActivity{{j}}Course{{i}}Modal" *ngIf="!hideBtnIfActivitySuccess(curso)"
+                            data-bs-toggle="modal" [attr.data-bs-target]="'#activity'+j+'Course'+i"
+                            class="btn btn-primary">Resolver
                             actividad</button>
-                        <button *ngIf="hideBtnIfActivitySuccess(curso)" data-bs-toggle="modal"
-                            [attr.data-bs-target]="'#staticBackdrop'+j" class="btn btn-primary">Repasar
+                        <button id="resolverActivity{{j}}Course{{i}}Modal" *ngIf="hideBtnIfActivitySuccess(curso)"
+                            data-bs-toggle="modal" [attr.data-bs-target]="'#activity'+j+'Course'+i"
+                            class="btn btn-primary">Repasar
                             actividad</button>
                     </div>
                 </div>
             </div>
         </div>
         <form (ngSubmit)="sumPuntos(curso)">
-            <div class="modal fade" id="staticBackdrop{{j}}" data-bs-backdrop="static" data-bs-keyboard="false"
+            <div class="modal fade" id="activity{{j}}Course{{i}}" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" [attr.aria-labelledby]="curso.nombreActividad" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content bg-dark text-white">
@@ -50,7 +147,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div id="carouselPresentations{{j}}" class="carousel slide" data-bs-wrap="false">
+                            <div id="carouselPresentationsOfActivity{{j}}Course{{i}}" class="carousel slide" data-bs-wrap="false">
                                 <div id="pruebaaa" class="carousel-inner">
                                     <div id="topItem" class="carousel-item active">
                                         <div class="content-carousel">
@@ -152,12 +249,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div *ngIf="curso.existeQuiz" id="pregunta3" class="carousel-item">
+                                    <div *ngIf="curso.existeQuiz && curso.quiz.length===3" id="pregunta3"
+                                        class="carousel-item">
                                         <div class="content-carousel">
                                             <div class="pr">
                                                 <!-- TERCERA PREGUNTA -->
                                                 <img src="{{curso.quiz[2]?.imagen}}" alt="">
-                                                <span id="pruebaxd">{{curso.quiz[0]?.pregunta}}</span>
+                                                <span id="pruebaxd">{{curso.quiz[2]?.pregunta}}</span>
                                                 <div class="form-check">
                                                     <input [(ngModel)]="selectedOption3" class="form-check-input"
                                                         type="radio" name="pregunta3opcion1" id="pregunta3opcion1"
@@ -196,22 +294,21 @@
 
                                 </div>
                             </div>
-                            <button *ngIf="acabeCurso" class="carousel-control-prev" type="button"
-                                [attr.data-bs-target]="'#carouselPresentations'+j" data-bs-slide="prev" id="botonIzq">
+                            <button class="carousel-control-prev" type="button"
+                                [attr.data-bs-target]="'#carouselPresentationsOfActivity'+j+'Course'+i" data-bs-slide="prev" id="botonIzqCurso{{i}}Actividad{{j}}">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
                             <button *ngIf="acabeCurso" class="carousel-control-next" type="button"
-                                [attr.data-bs-target]="'#carouselPresentations'+j" data-bs-slide="next" id="botonDer">
+                                [attr.data-bs-target]="'#carouselPresentationsOfActivity'+j+'Course'+i" data-bs-slide="next" id="botonDerCurso{{i}}Actividad{{j}}">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
                         <div class="modal-footer pr">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                (click)="acabeCurso=true">Close</button>
-                            <button type="submit" class="btn btn-primary" [hidden]="hideBtnIfActivitySuccess(curso)"
-                                [disabled]="acabeCurso">Understood</button>
+                            <button (click)="acabeCurso=true" id="closeCarouselPresentationsOfActivity{{j}}Course{{i}}" type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button id="finishCarouselPresentationsOfActivity{{j}}Course{{i}}" type="submit" class="btn btn-primary" [hidden]="hideBtnIfActivitySuccess(curso)"
+                                [disabled]="acabeCurso">Terminar</button>
                         </div>
                     </div>
                 </div>

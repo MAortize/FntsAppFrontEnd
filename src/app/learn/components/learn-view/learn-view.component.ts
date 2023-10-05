@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { LearnService } from '../../services/learn.service';
 import Swal from 'sweetalert2'
 
@@ -9,7 +8,7 @@ import Swal from 'sweetalert2'
     templateUrl: './learn-view.component.html',
     styleUrls: ['./learn-view.component.css']
 })
-export class LearnViewComponent implements OnInit {
+export class LearnViewComponent implements OnInit, AfterViewInit {
 
     cursos = []
 
@@ -17,9 +16,13 @@ export class LearnViewComponent implements OnInit {
 
     userCourseActivity: any = []
 
+
     acabeCurso = true
+    inicieCurso = true
 
     emailUserInSesssion: string;
+
+    puntuacionInSession: string;
 
     actividadFinalizada: boolean
 
@@ -30,19 +33,56 @@ export class LearnViewComponent implements OnInit {
     constructor(private service: LearnService, private renderer: Renderer2, private el: ElementRef) {
 
     }
-
-
+    
+    
     ngOnInit(): void {
-
+    }
+    ngAfterViewInit(): void {
         this.emailUserInSesssion = sessionStorage.getItem('email')
-
+        
+        this.puntuacionInSession = sessionStorage.getItem('puntuacion')
+        
+        const input = document.getElementById('hiddenPrueba')
+        if (this.puntuacionInSession === '0') {
+            input?.click()
+        }
         this.service.getUserCourseActivities(this.emailUserInSesssion).subscribe((data) => {
             this.userCourseActivity = data
+            console.log(this.userCourseActivity);            
+            if (this.userCourseActivity[0].course_state === true) {
+                Swal.fire({
+                    title: 'Al parecer terminaste todas las actividades de este curso, estamos promoviendote al siguiente',
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                    }
+                })
+                this.service.upgradeCourse(this.emailUserInSesssion).subscribe(()=>{
+                })
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'Fuiste promovido',
+                        text: 'Felicidades ^.^',
+                        icon: 'success',
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: '#008000'
+                    }).then((data) => {
+                        if (data.isConfirmed) {
+                            window.location.reload()
+                        }
+                    })
+                }, 11500)
+            }
         })
+
+
+
 
 
         this.service.getListaCursos().subscribe((data) => {
             this.listCursos = data
+
         })
 
 
@@ -70,9 +110,9 @@ export class LearnViewComponent implements OnInit {
     }
 
 
-    prueba(j) {
-        var miCarrusel = document.getElementById('carouselPresentations' + j);
-        console.log(miCarrusel.id);
+    prueba(j, i) {
+        var miCarrusel = document.getElementById('carouselPresentationsOfActivity' + j + 'Course' + i);
+        // console.log(miCarrusel.id);
 
 
         // Agrega un oyente de eventos al carrusel que se activa cuando se cambia de diapositiva
@@ -83,10 +123,11 @@ export class LearnViewComponent implements OnInit {
             const lastIndex = items.length - 1;
             const currentIndex = Array.from(items).indexOf(activeItem);
 
+
             if (currentIndex === lastIndex) {
                 // Estás mostrando el último elemento del carrusel
                 this.acabeCurso = false
-            }else{
+            } else {
                 this.acabeCurso = true
             }
         });
@@ -94,20 +135,55 @@ export class LearnViewComponent implements OnInit {
     }
 
     sumPuntos(actividad: any) {
-        // console.log('opcion escogida pregunta1',this.selectedOption1);
-        // console.log('respuesta correcta pregunta1',respuestaCorrectaPregunta1);
-        // console.log('opcion escogida pregunta2',this.selectedOption2);
-        // console.log('respuesta correcta pregunta2',respuestaCorrectaPregunta2);
-        // console.log('opcion escogida pregunta3',this.selectedOption3);
-        // console.log('respuesta correcta pregunta3',respuestaCorrectaPregunta3);
-        
-        /* TODO: acomodar los condicionales ya que se debe evaluar en que estado viene el atributo contiene quiz del json ya que si esta en falso entonces no deberia 
-        el ngmodel de las repsuestas de las actividades, mas si deberia sumar puntos. Pero si viene en true entonces deberia evaluar las respuestas y sumar puntos igualmente*/
-        
+       
         if (actividad.existeQuiz == true) {
-            const respuestaCorrectaPregunta1 = actividad.quiz[0].respuestaCorrecta.toString()
-            const respuestaCorrectaPregunta2 = actividad.quiz[1].respuestaCorrecta.toString()
-            const respuestaCorrectaPregunta3 = actividad.quiz[2].respuestaCorrecta.toString()
+
+            const respuestaCorrectaPregunta1 = actividad.quiz[0]?.respuestaCorrecta.toString()
+            const respuestaCorrectaPregunta2 = actividad.quiz[1]?.respuestaCorrecta.toString()
+            const respuestaCorrectaPregunta3 = actividad.quiz[2]?.respuestaCorrecta.toString()
+
+            console.log(respuestaCorrectaPregunta3);
+
+
+            if (this.selectedOption1 !== respuestaCorrectaPregunta1 && this.selectedOption2 !== respuestaCorrectaPregunta2) {
+                Swal.fire({
+                    title: 'Upss!!',
+                    icon: 'warning',
+                    text: 'Ambas respuestas están malas, revisa y corrige tú puedes',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#008000'
+                })
+            }
+
+            if (this.selectedOption1 !== respuestaCorrectaPregunta1 && this.selectedOption2 === respuestaCorrectaPregunta2) {
+                Swal.fire({
+                    title: 'Upss!!',
+                    icon: 'warning',
+                    text: 'La respuesta en la pregunta 1 es incorrecta valida tu respuesta',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#008000'
+                })
+            }
+            if (this.selectedOption1 === respuestaCorrectaPregunta1 && this.selectedOption2 !== respuestaCorrectaPregunta2) {
+                Swal.fire({
+                    title: 'Upss!!',
+                    icon: 'warning',
+                    text: 'La respuesta en la pregunta 2 es incorrecta valida tu respuesta',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#008000'
+                })
+            }
+
+            if (this.selectedOption1 !== respuestaCorrectaPregunta1 && this.selectedOption2 !== respuestaCorrectaPregunta2 && this.selectedOption3 !== respuestaCorrectaPregunta3) {
+                Swal.fire({
+                    title: 'Upss!!',
+                    icon: 'warning',
+                    text: 'Las tres respuestas están malas, revisa y corrige tú puedes',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#008000'
+                })
+            }
+
             if (this.selectedOption1 !== respuestaCorrectaPregunta1 && this.selectedOption2 === respuestaCorrectaPregunta2 && this.selectedOption3 === respuestaCorrectaPregunta3) {
                 Swal.fire({
                     title: 'Upss!!',
@@ -126,7 +202,7 @@ export class LearnViewComponent implements OnInit {
                     confirmButtonColor: '#008000'
                 })
             }
-            if (this.selectedOption1 === respuestaCorrectaPregunta1 && this.selectedOption2 === respuestaCorrectaPregunta2 && this.selectedOption3 !== respuestaCorrectaPregunta3) {
+            if (respuestaCorrectaPregunta3 !== undefined && this.selectedOption1 === respuestaCorrectaPregunta1 && this.selectedOption2 === respuestaCorrectaPregunta2 && this.selectedOption3 !== respuestaCorrectaPregunta3) {
                 Swal.fire({
                     title: 'Upss!!',
                     icon: 'warning',
@@ -136,63 +212,101 @@ export class LearnViewComponent implements OnInit {
                 })
             }
             if (this.selectedOption1 === respuestaCorrectaPregunta1 && this.selectedOption2 === respuestaCorrectaPregunta2 && this.selectedOption3 === respuestaCorrectaPregunta3) {
-                this.service.sumPuntosInBack(this.emailUserInSesssion).subscribe(()=>{
-                    this.service.upgradeLevel(this.emailUserInSesssion).subscribe(()=>{
-                        this.service.changeStateOfActivity(this.emailUserInSesssion).subscribe(()=>{
-                            this.service.changeActivity(this.emailUserInSesssion).subscribe(()=>{
-                                this.service.getUserCourseActivities(this.emailUserInSesssion).subscribe((data)=>{
-                                    const listAct = data                            
-                                    if (listAct[0].course_state === true) {
-                                        this.service.upgradeCourse(this.emailUserInSesssion).subscribe()
-                                    }
-                                })
+                this.service.sumPuntosInBack(this.emailUserInSesssion).subscribe(() => {                                    
+                    this.service.upgradeLevel(this.emailUserInSesssion).subscribe(() => {                    
+                        this.service.changeStateOfActivity(this.emailUserInSesssion).subscribe(() => {                    
+                            this.service.changeActivity(this.emailUserInSesssion).subscribe(() => {                               
                             })
                         })
                     })
                 })
                 this.service.sumPuntos()
                 Swal.fire({
-                    title: 'Todas tus respuestas estan correctas >:D',
-                    text:  'Felicidades por aprender algo nuevo hoy ^.^',
-                    icon: 'success',
-                    confirmButtonText: 'Ok',
-                    confirmButtonColor: '#008000'
-                }).then((data)=>{
-                    if (data.isConfirmed) {
-                        window.location.reload()
+                    title: 'Estamos calculando tu puntuación',
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
                     }
                 })
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'Todas las respuestas están correctas',
+                        text: 'Felicidades por aprender algo nuevo hoy ^.^',
+                        icon: 'success',
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: '#008000'
+                    }).then((data) => {
+                        if (data.isConfirmed) {
+                            window.location.reload()
+                        }
+                    })
+                }, 11500)
             }
-        }
-        if (actividad.existeQuiz == false) {
-            console.log('entre por aca ya que el existeQuiz esta en false xd');
-
-            this.service.sumPuntosInBack(this.emailUserInSesssion).subscribe(() => {
-                this.service.upgradeLevel(this.emailUserInSesssion).subscribe(() => {
-                    this.service.changeStateOfActivity(this.emailUserInSesssion).subscribe(() => {
-                        this.service.changeActivity(this.emailUserInSesssion).subscribe(() => {
-                            this.service.getUserCourseActivities(this.emailUserInSesssion).subscribe((data) => {
-                                const listAct = data
-                                if (listAct[0].course_state === true) {
-                                    this.service.upgradeCourse(this.emailUserInSesssion).subscribe()
-                                }
+            if (this.selectedOption1 === respuestaCorrectaPregunta1 && this.selectedOption2 === respuestaCorrectaPregunta2 && respuestaCorrectaPregunta3 === undefined) {
+                this.service.sumPuntosInBack(this.emailUserInSesssion).subscribe(() => {                                    
+                    this.service.upgradeLevel(this.emailUserInSesssion).subscribe(() => {                    
+                        this.service.changeStateOfActivity(this.emailUserInSesssion).subscribe(() => {                    
+                            this.service.changeActivity(this.emailUserInSesssion).subscribe(() => {                               
                             })
                         })
                     })
                 })
+                this.service.sumPuntos()
+                Swal.fire({
+                    title: 'Estamos calculando tu puntuación',
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                    }
+                })
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'Todas las respuestas están correctas',
+                        text: 'Felicidades por aprender algo nuevo hoy ^.^',
+                        icon: 'success',
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: '#008000'
+                    }).then((data) => {
+                        if (data.isConfirmed) {
+                            window.location.reload()
+                        }
+                    })
+                }, 11500)
+            }
+        }
+        if (actividad.existeQuiz == false) {
+            this.service.sumPuntosInBack(this.emailUserInSesssion).subscribe(() => {                                    
+                this.service.upgradeLevel(this.emailUserInSesssion).subscribe(() => {                    
+                    this.service.changeStateOfActivity(this.emailUserInSesssion).subscribe(() => {                    
+                        this.service.changeActivity(this.emailUserInSesssion).subscribe(() => {                               
+                        })
+                    })
+                })
             })
-            this.service.sumPuntos()
-
+            this.service.sumPuntos()            
             Swal.fire({
-                title: 'Felicidades por aprender algo nuevo hoy ^.^',
-                icon: 'success',
-                confirmButtonText: 'Ok',
-                confirmButtonColor: '#008000'
-            }).then((data)=>{
-                if (data.isConfirmed) {
-                    window.location.reload()
+                title: 'Estamos calculando tu puntuación',
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
                 }
             })
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'Felicidades por aprender algo nuevo hoy ^.^',
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#008000'
+                }).then((data) => {
+                    if (data.isConfirmed) {
+                        window.location.reload()
+                    }
+                })
+            }, 11500)
         }
     }
 }
+

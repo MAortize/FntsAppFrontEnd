@@ -1,4 +1,145 @@
+@media only screen and (max-height: 768px){
+    .sidebar-right-mods {
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(180, 41%, 35%) 15%,
+                hsl(189, 41%, 30%) 35%,
+                hsl(199, 41%, 20%) 75%,
+                hsl(192, 40%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(187, 41%, 45%) 15%,
+                hsl(197, 41%, 30%) 35%,
+                hsl(191, 41%, 20%) 75%,
+                hsl(189, 40%, 19%) 80%,
+                transparent 100%);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center;
+        flex-wrap: wrap !important;
+        min-height: 0 !important;
+        min-width: 100%;
+        position: fixed !important;
+        right: 0;
+        bottom: 0;
+        z-index: none;
+    }
+}
+
+@media only screen and (max-height: 563.33px){
+    .sidebar-right-mods {
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(180, 41%, 35%) 15%,
+                hsl(189, 41%, 30%) 35%,
+                hsl(199, 41%, 20%) 75%,
+                hsl(192, 40%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(187, 41%, 45%) 15%,
+                hsl(197, 41%, 30%) 35%,
+                hsl(191, 41%, 20%) 75%,
+                hsl(189, 40%, 19%) 80%,
+                transparent 100%);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center;
+        flex-wrap: wrap !important;
+        min-height: 0 !important;
+        min-width: 100%;
+        position: fixed !important;
+        right: 0;
+        bottom: 0;
+        z-index: none;
+    }
+}
+
+
+@media only screen and (max-height: 611px){
+    .sidebar-right-mods {
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(180, 41%, 35%) 15%,
+                hsl(189, 41%, 30%) 35%,
+                hsl(199, 41%, 20%) 75%,
+                hsl(192, 40%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(187, 41%, 45%) 15%,
+                hsl(197, 41%, 30%) 35%,
+                hsl(191, 41%, 20%) 75%,
+                hsl(189, 40%, 19%) 80%,
+                transparent 100%);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center;
+        flex-wrap: wrap !important;
+        min-height: 0 !important;
+        min-width: 100%;
+        position: fixed !important;
+        right: 0;
+        bottom: 0;
+        z-index: none;
+    }
+}
+
+
+@media only screen and (max-height: 768px){
+    .sidebar-right-mods {
+        background-color: hsl(163, 40%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(180, 41%, 35%) 15%,
+                hsl(189, 41%, 30%) 35%,
+                hsl(199, 41%, 20%) 75%,
+                hsl(192, 40%, 19%) 80%,
+                transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                hsl(187, 41%, 45%) 15%,
+                hsl(197, 41%, 30%) 35%,
+                hsl(191, 41%, 20%) 75%,
+                hsl(189, 40%, 19%) 80%,
+                transparent 100%);
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center;
+        flex-wrap: wrap !important;
+        min-height: 0 !important;
+        min-width: 100%;
+        position: fixed !important;
+        right: 0;
+        bottom: 0;
+        z-index: none;
+    }
+}
+
+
+
+@media only screen and (max-width: 1366px){
+    .main-content{
+        margin-left: 90px;
+    }
+}
+
+
+@media only screen and (max-width: 1280px){
+    .main-content{
+        margin-left: 70px;
+    }
+}
+
+
 @media only screen and (max-width: 1360px) {
+    .img-resize {
+        height: 60px !important;
+        width: 160px !important;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
     .img-resize {
         height: 60px !important;
         width: 160px !important;
@@ -111,7 +252,7 @@ se ejecutan dichas clases*/
         position: fixed !important;
         right: 0;
         bottom: 0;
-        z-index: 210;
+        z-index: 1;
     }
 
 
@@ -147,6 +288,7 @@ se ejecutan dichas clases*/
     flex: 1 0 0%;
     align-items: center !important;
     min-height: 100vh;
+    margin-bottom: 80px;
     /* align-self: center!important; */
     /* justify-self: center; */
     /* width: fit-content;   */
@@ -248,6 +390,7 @@ se ejecutan dichas clases*/
     border-style: solid;
     border-width: 1px;
     position: fixed;
+    z-index: 1;
 }
 
 

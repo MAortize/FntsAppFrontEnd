@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
 import { UserModelo } from 'src/app/shared/models/user.model';
+import { LearnService } from 'src/app/learn/services/learn.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-view',
@@ -19,6 +21,11 @@ export class ProfileViewComponent implements OnInit {
 
   userModelo: UserModelo;
 
+  emailUserInSesssion: string;
+  userCourseActivity: any = []
+
+  actividad: any;
+
 
   miEstilo: any = {
     'color': 'red',
@@ -29,12 +36,20 @@ export class ProfileViewComponent implements OnInit {
 
   value: string = "Modificar datos"
 
-  constructor(private fb: FormBuilder, private service: ProfileService){
+  constructor(private fb: FormBuilder, private service: ProfileService, private serviceLearn: LearnService) {
   }
 
 
   ngOnInit(): void {
-    this.passwordRegisterControl = new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,40}$/)])    
+
+    this.emailUserInSesssion = sessionStorage.getItem('email')
+
+    this.serviceLearn.getUserCourseActivities(this.emailUserInSesssion).subscribe((data) => {
+      this.userCourseActivity = data
+      this.actividad = this.userCourseActivity[0].activity_id
+    })
+
+    this.passwordRegisterControl = new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,40}$/)])
 
     this.formChangePass = this.fb.group({
       password: this.passwordRegisterControl
@@ -43,19 +58,21 @@ export class ProfileViewComponent implements OnInit {
 
 
 
-  changePass(){
+  changePass() {
+
     this.service.changePasswordBack(this.fillDataUser(this.userModelo)).subscribe()
     this.service.changePassword(this.fillDataUser(this.userModelo));
+
   }
 
 
-  fillDataUser(user: UserModelo): UserModelo{
+  fillDataUser(user: UserModelo): UserModelo {
     const email = sessionStorage.getItem('email')
-    console.log(email);
-    
+    // console.log(email);
+
     const password = this.formChangePass.get('password')?.value
-    console.log(password);
-    
+    // console.log(password);
+
 
     user = new UserModelo()
 
@@ -68,11 +85,11 @@ export class ProfileViewComponent implements OnInit {
   }
 
 
-  activarCambioData(){
+  activarCambioData() {
     this.changeData = !this.changeData
-    if (this.changeData==false) {
+    if (this.changeData == false) {
       this.value = "Modificando datos"
-    }else{
+    } else {
       this.value = "Modificar  datos"
     }
   }

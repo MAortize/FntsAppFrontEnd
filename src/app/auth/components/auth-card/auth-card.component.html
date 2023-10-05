@@ -7,7 +7,7 @@
             <ul class="nav nav-tabs" id="tabs" role="tablist">
               <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane"
-                  type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">Inicia Sesion</button>
+                  type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">Inicia Sesión</button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup-tab-pane"
@@ -29,15 +29,15 @@
                         class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
                         autocomplete="off"  [formControl]="emailLoginControl"/>
                         <app-error-forms-handle [formControlErrorEmail]="emailLoginControl" [input]='"email"'></app-error-forms-handle>
-                      <label class="" for="emailLogin">Correo Electronico</label>
+                      <label class="" for="emailLogin">Correo Electrónico</label>
                     </div>
                     <div class="form-floating mb-4">
                       <input type="password" name="password-login" id="password"
-                        class="form-control bg-black text-white personalized-inputs" placeholder="******" [formControl]="passwordLoginControl"/>
+                        class="form-control bg-black text-white personalized-inputs" placeholder="******" [formControl]="passwordLoginControl" autocomplete="new-password"/>
                         <app-error-forms-handle [formControlErrorPasswordLogin]="passwordLoginControl" [input]='"Contraseña"'></app-error-forms-handle>
                       <label class="" for="password">Contraseña</label>
                     </div>
-                    <button class="btn btn-outline-success btn-lg px-5 mt-4" type="submit">Inicia Sesion</button>
+                    <button id="loginBtn" class="btn btn-outline-success btn-lg px-5 mt-4" type="submit">Inicia Sesión</button>
                   </form>
                 </div>
                 <div class="tab-pane fade show" id="signup-tab-pane" role="tabpanel" aria-labelledby="signup-tab"
@@ -69,7 +69,7 @@
                             class="form-control bg-black text-white personalized-inputs" placeholder="name@example.com"
                             autocomplete="off" [formControl]="emailRegisterControl"/>
                             <app-error-forms-handle [formControlErrorEmail]="emailRegisterControl" [input]='"Email"'></app-error-forms-handle>
-                          <label class="form-label" for="emailRegister">Correo Electronico</label>
+                          <label class="form-label" for="emailRegister">Correo Electrónico</label>
                         </div>
                       </div>
                       <div class="col-md-6 mb-4">
@@ -123,30 +123,12 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Continuar</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <!-- <button class="btn btn-outline-success btn-lg px-5 mt-4" data-bs-toggle="modal" data-bs-target="#modalSelectImgProfile">Registrate</button>
-                    <div class="modal-dialog modal-dialog-centered" id="modalSelectImgProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalSelectImgProfileLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            ...
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
                   </form>
                 </div>
               </div>

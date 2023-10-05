@@ -255,4 +255,68 @@ input#userProfile:disabled,#emailProfile:disabled{
 }
 
 
+/* Estilo para el contenedor de la burbuja */
+.burbuja {
+    background-color: #9BEDFD;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 800px;
+    position: relative;
+    margin: 20px;
+}
+
+/* Pico de la burbuja */
+.burbuja::before {
+    content: "";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+}
+
+/* Pico en la parte inferior */
+.burbuja::before {
+    content: "";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    bottom: -20px;
+    /* Ajusta la distancia del pico al borde inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    border-color: #9BEDFD transparent transparent transparent;
+}
+
+
+/* Estilo del texto dentro de la burbuja */
+.burbuja p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.text-animated {
+    border-right: .15em solid #000;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s steps(40) 1s 1 normal both, blink 1s steps(1) infinite;
+}
+
+
 
