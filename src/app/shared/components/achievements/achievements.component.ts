@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { LearnService } from '../../../learn/services/learn.service';
 
 
@@ -7,7 +7,7 @@ import { LearnService } from '../../../learn/services/learn.service';
   templateUrl: './achievements.component.html',
   styleUrls: ['./achievements.component.css']
 })
-export class AchievementsComponent implements OnInit, AfterViewInit {
+export class AchievementsComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   @ViewChild('listAchievements') listAchievementsRef: ElementRef
 
@@ -20,38 +20,51 @@ export class AchievementsComponent implements OnInit, AfterViewInit {
   logroSuccess: boolean = true;
 
 
-  constructor(private serviceLearn: LearnService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { }
+
+  ngAfterContentInit(): void {
+  }
+
+
+  ngAfterViewInit(): void {
+    this.emailUserInSesssion = sessionStorage.getItem('email');
+    setTimeout(()=>{
+      this.fillAchievementsInPage()
+    },0)
+  }
+
+
+  fillAchievementsInPage() {
+    if (localStorage.getItem('dataUserCourseActivities')) {
+      this.getDataForFillAchievements()
+    }
+    setTimeout(() => {
+      this.getDataForFillAchievements()
+    }, 5600)
 
   }
 
-  ngAfterViewInit(): void {
-    
-    this.emailUserInSesssion = sessionStorage.getItem('email')
 
-    this.serviceLearn.getUserCourseActivities(this.emailUserInSesssion).subscribe((data) => {
-      this.userCourseActivity = data
-      const activity_id = this.userCourseActivity[0].activity_id
-      const ulElements = this.listAchievementsRef.nativeElement as HTMLUListElement;
-      const liElements = ulElements.querySelectorAll('li');
-      
-      
+  getDataForFillAchievements() {
+    const data = localStorage.getItem('dataUserCourseActivities');
+
+    this.userCourseActivity = JSON.parse(data);
 
 
-      liElements.forEach((li: HTMLLIElement, index: number) => {
-        if (index+1<activity_id) {          
-          this.logroSuccess = false
-          li.classList.add('active')
-          
-        }else{
-          this.logroSuccess = true
-          li.classList.add('disabled')
-          
-          
-        }
-      })
+    const activity_id = this.userCourseActivity[0].activity_id
+    const ulElements = this.listAchievementsRef.nativeElement as HTMLUListElement;
+    const liElements = ulElements.querySelectorAll('li');
+
+    liElements.forEach((li: HTMLLIElement, index: number) => {
+      if (index + 1 < activity_id) {
+        this.logroSuccess = false
+        li.classList.add('active')
+      } else {
+        this.logroSuccess = true
+        li.classList.add('disabled')
+      }
     })
   }
 }

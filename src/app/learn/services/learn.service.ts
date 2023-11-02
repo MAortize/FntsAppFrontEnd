@@ -16,7 +16,7 @@ export class LearnService {
   pathCollection = '/users/' + sessionStorage.getItem('uid')
 
   constructor(private http: HttpClient, private db: Firestore) { }
-  
+
   getListaCursos(){
     return this.http.get(`${baseUrl}/courses/get/`)
   }
@@ -51,7 +51,7 @@ export class LearnService {
 
   async sumPuntos() {
     const docInstance = doc(this.db, this.pathCollection)
-    let puntuacionFromBd; 
+    let puntuacionFromBd;
     await getDoc(docInstance).then((doc) => {
       if (doc && doc.exists()) {
         const data = doc.data();
@@ -66,7 +66,7 @@ export class LearnService {
           sessionStorage.setItem('puntuacion', updateData.puntuacion)
           // console.log('Despues de sumar', updateData.puntuacion);
         })
-        
+
       }
     })
     .catch((error) => {

@@ -10,6 +10,7 @@ import { firebaseConfig } from 'src/environments/environment';
 import { AuthService } from './services/auth.service';
 import { AuthModule } from '@angular/fire/auth';
 import { SharedModule } from '../shared/shared.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,19 +19,19 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     provideFirebaseApp(()=>initializeApp(firebaseConfig)),
+    HttpClientModule,
     CommonModule,
     AuthRoutingModule,
     AuthModule,
     FormsModule,
     SharedModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
   ],
   exports: [
     AuthCardComponent
   ],
   providers: [
-    AuthService    
+    AuthService
   ]
 
 })

@@ -1,27 +1,20 @@
 import { Injectable, Output } from '@angular/core';
 
-
-
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, setPersistence } from '@angular/fire/auth';
 
-import { Firestore, addDoc, collection, doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject, delay } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import baseUrl from '../../../environments/environment';
-
-
 import Swal from 'sweetalert2';
 import { UserModelo } from 'src/app/shared/models/user.model';
 
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class AuthService {
 
 
@@ -32,7 +25,7 @@ export class AuthService {
 
 
 
-  constructor(private http: HttpClient, private db: Firestore, private router: Router) {
+  constructor(private http: HttpClient, private db?: Firestore, private router?: Router) {
     this.leerToken();
   }
 
@@ -117,7 +110,7 @@ export class AuthService {
         setDoc(doc(this.db, pathCollection, userRegister.uid), userFillingData).then(()=>{
           window.location.reload()
         })
-        
+
       })
     }).catch(error => {
       console.log('Aca salta el error', error);
@@ -185,17 +178,8 @@ export class AuthService {
 
 
   signOut() {
-
     sessionStorage.clear()
-    // sessionStorage.removeItem('token')
-    // sessionStorage.removeItem('email')
-    // sessionStorage.removeItem('adminEmail')
-    // sessionStorage.removeItem('expira')
-    // sessionStorage.removeItem('uid')
-    // sessionStorage.removeItem('urlPic')
-    // sessionStorage.removeItem('username')
-    // sessionStorage.removeItem('JWT')
-    // sessionStorage.removeItem('puntuacion')
+    localStorage.clear()
   }
 
   private getInfoUser(email?: string | null) {
